@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
-  AppRegistry
+  AppRegistry,
+  StyleSheet
 } from 'react-native';
 
 
 class App extends Component {
   render(){
     return(
-  <View style={{alignContent:'center', justifyContent:'center',  flex:1, backgroundColor:'lightblue'}}>
+  <View style={{alignItems:'center', justifyContent:'center',  flex:1, backgroundColor:'lightblue'}}>
   <Text >Hello World</Text>
   </View>
     )
