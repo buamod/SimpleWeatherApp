@@ -6,11 +6,13 @@ import {
   StyleSheet
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {fetchWeather} from './weatherAPI'
 
 class App extends Component {
 
   componentDidMount(){
     this.getlocation()
+    fetchWeather(-21, 28)
   }
 
   getlocation(){
