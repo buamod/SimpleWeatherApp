@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.getlocation2()
+    this.getlocation()
 //    this.getlocation()
 
     //Testing only
@@ -43,7 +43,7 @@ class App extends Component {
     navigator.geolocation.getCurrentPosition(
       (postData) => fetchWeather(postData.coords.latitude, postData.coords.longitude)
       .then (res => this.setState({
-        temp:Math.round(res.temp),
+        temp:Math.round(toCelsius(Math.round(res.temp))),
         weather:res.weather
       })),
       (error) => alert(error),
@@ -85,7 +85,7 @@ class App extends Component {
 }
 
 function toCelsius(k) {
-  return k //- 273.15
+  return k - 273.15
 }
 
 const iconNames = {
@@ -191,14 +191,16 @@ bodyStyle:{
 },
 title:{
   fontFamily:'HelveticaNeue-Bold',
-  fontSize:78,
+  alignItems:'center',    
+  fontSize:55,
   color:'white',
-  marginBottom:5,
+  marginBottom:200,
 },
 subTitle:{
   fontFamily:'HelveticaNeue-Medium',
   fontSize:24,
-  color:'white'
+  color:'white',  
+  marginBottom:-444  
 }
 })
 
