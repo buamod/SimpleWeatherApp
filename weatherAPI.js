@@ -8,7 +8,8 @@ return fetch(url)
         .then(res => res.json())
         .then(json => ({
             temp: json.main.temp,
-            weather: json.weather[0].main
+            weather: json.weather[0].main,
+						city: json.name
         }))
 
 }
