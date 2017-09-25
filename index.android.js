@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar
+  StatusBar,
+  Image
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {fetchWeather} from './weatherAPI'
@@ -52,7 +53,6 @@ export default class App extends Component {
   render() {
     return(
       <View style={[allStyles.container, {backgroundColor:phrases[this.state.weather].background}]}>
-        {/* <StatusBar hidden={this.state.hideStatusBar}/>     */}
         <StatusBar hidden={true}/>
 
         <View style= {allStyles.cityHeaderStyle}>
@@ -65,6 +65,9 @@ export default class App extends Component {
         </View>
 
         <View style={allStyles.bodyStyle}>
+          <Image style={allStyles.bacgroundImgStyle}
+            source={{uri: 'http://www.pngmart.com/files/3/Weather-PNG-Photos.png'}}
+          >
           <Highlight
             style ={allStyles.title}
             highlightStyle={{color: phrases[this.state.weather].color}}
@@ -72,8 +75,8 @@ export default class App extends Component {
             textToHighlight={phrases[this.state.weather].title}
           />
           <Text style={allStyles.subtitle}>{phrases[this.state.weather].subtitle}</Text>
+          </Image>
         </View>
-
       </View>
     );
   }
@@ -152,7 +155,19 @@ const phrases = {
 		background: "#1FBB68"
 	},
 }
-
+/*
+const imageSources = {
+  //All weather states have the same image for testing only
+	Default: './weatherImages/default.jpg',
+  Clear: './weatherImages/default.jpg',
+  Rain: './weatherImages/default.jpg',
+  Thunderstorm: './weatherImages/default.jpg',
+  Clouds: './weatherImages/default.jpg',
+  Snow: './weatherImages/default.jpg',
+  Drizzle: './weatherImages/default.jpg',
+  Mist: './weatherImages/default.jpg',
+}
+*/
 const allStyles = StyleSheet.create({
   container:{
     flex:1,
@@ -199,11 +214,17 @@ const allStyles = StyleSheet.create({
     margin:10,
    // backgroundColor: 'yellow'
   },
+  bacgroundImgStyle:{
+    flex: 1,
+    alignItems: 'center',
+    resizeMode:'contain',
+    justifyContent: 'center',
+  },
   title:{
     fontFamily:'HelveticaNeue-Bold',
     alignItems:'center',
     fontSize:55,
-    color:'white',
+    color:3007,
     marginBottom:200,
   },
   subTitle:{
