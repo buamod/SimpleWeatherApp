@@ -103,9 +103,9 @@ const phrases = {
 		background: "#9C9C9C"
 	},
 	Clear: {
-		title: "It's Amazing",
+		title: "It's Amazing weather",
 		subtitle: "Rock that shit!",
-		highlight: "Enjoy",
+		highlight: "Enjoy the nice weather",
 		color: "#E32500",
 		background: "#FFD017"
 	},
@@ -124,14 +124,14 @@ const phrases = {
 		background: "#020202"
 	},
 	Clouds: {
-		title: "Cloud storage limit reached",
-		subtitle: "error: 5000 - cirrocumulus",
+		title: "Sky is full of clouds",
+		subtitle: "When clouds are dark, wait for the rain",
 		highlight: "limit",
 		color: "#0044FF",
 		background: "#939393"
 	},
 	Snow: {
-		title: "of course it's snowing",
+		title: "Of course it's snowing",
 		subtitle: "You're not supposed to eat it",
 		highlight: "Snow",
 		color: "#021D4C",
