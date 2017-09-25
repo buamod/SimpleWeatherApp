@@ -23,7 +23,8 @@ export default class App extends Component {
   //  this.state = {hideStatusBar:false}
     this.state = {
       temp:0,
-      weather: 'Default'
+      weather: 'Default',
+      city: 'Unknown City'
     }
   }
 
@@ -36,7 +37,8 @@ export default class App extends Component {
       (postData) => fetchWeather(postData.coords.latitude, postData.coords.longitude)
         .then (res => this.setState({
           temp:Math.round(toCelsius(Math.round(res.temp))),
-          weather:res.weather
+          weather:res.weather,
+          city: res.city
         })),
       (error) => alert(error),
       {timeout:10000}
@@ -52,7 +54,12 @@ export default class App extends Component {
       <View style={[allStyles.container, {backgroundColor:phrases[this.state.weather].background}]}>
         {/* <StatusBar hidden={this.state.hideStatusBar}/>     */}
         <StatusBar hidden={true}/>
-        <View style={allStyles.headerStyle}>
+
+        <View style= {allStyles.cityHeaderStyle}>
+          <Text style = {allStyles.cityNameStyle}> City: {this.state.city} </Text>
+        </View>
+
+        <View style={allStyles.tempHeaderStyle}>
           <Icon  name={iconNames[this.state.weather]} style={allStyles.iconStyle}/>
           <Text style={allStyles.temp}> {this.state.temp}° </Text>
         </View>
@@ -66,6 +73,7 @@ export default class App extends Component {
           />
           <Text style={allStyles.subtitle}>{phrases[this.state.weather].subtitle}</Text>
         </View>
+
       </View>
     );
   }
@@ -156,12 +164,27 @@ const allStyles = StyleSheet.create({
   marginBottom: -80
 
   },
-  headerStyle:{
+  cityHeaderStyle:{
+    //height: 40,
+    alignItems:'center', //horizontal
+    justifyContent:'flex-start', //vertical
+    flex:1,
+    backgroundColor: 3007,
+    flexDirection:'row'
+  },
+  tempHeaderStyle:{
     alignItems:'center',
     justifyContent:'space-around',
     flex:1,
    // backgroundColor: 'red',
     flexDirection:'row'
+  },
+  cityNameStyle:{
+    textAlign: 'left',
+    fontFamily:'HelveticaNeue-Bold',
+    fontSize:20,
+    color:'white',
+    marginBottom: 0
   },
   temp:{
     fontFamily:'HelveticaNeue-Bold',
