@@ -17,14 +17,22 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {fetchWeather} from './weatherAPI'
 import Highlight from 'react-native-highlight-words'
 
+const humedIconSource= 'http://www.icon2s.com/img256/256x256-black-white-android-humidity.png';
+//TODO: replace the following link
+const windIconSource= 'http://www.icon2s.com/img256/256x256-black-white-android-humidity.png';
 
 export default class App extends Component {
 
   componentWillMount(){
   //  this.state = {hideStatusBar:false}
     this.state = {
-      temp:0,
       weather: 'Default',
+      temp: '--',
+      humidity: '--',
+      pressure: '--',
+      temp_min: '--',
+      temp_max: '--',
+      wind_speed: '--',
       city: 'Unknown City'
     }
   }
@@ -37,8 +45,13 @@ export default class App extends Component {
     navigator.geolocation.getCurrentPosition(
       (postData) => fetchWeather(postData.coords.latitude, postData.coords.longitude)
         .then (res => this.setState({
-          temp:Math.round(toCelsius(Math.round(res.temp))),
-          weather:res.weather,
+          weather: res.weather,
+          temp: Math.round(toCelsius(Math.round(res.temp))),
+          humidity: res.humidity,
+          pressure: res.pressure,
+          temp_min: Math.round(toCelsius(Math.round(res.temp_min))),
+          temp_max: Math.round(toCelsius(Math.round(res.temp_max))),
+          wind_speed: res.wind_speed,
           city: res.city
         })),
       (error) => alert(error),
@@ -64,6 +77,28 @@ export default class App extends Component {
           <Text style={allStyles.temp}> {this.state.temp}° </Text>
         </View>
 
+        <View style={allStyles.subDetailsHeaderStyle}>
+          <View style={allStyles.twoSeparatViewsInRowStyle}>
+            <View style={allStyles.twoAdjacentViewsInRowStyle}>
+              <Image source={{uri:humedIconSource}} style={allStyles.subDetailsImgStyle}/>
+              <Text style={allStyles.subDetails}> {this.state.humidity} </Text>
+            </View>
+            <View style={allStyles.twoAdjacentViewsInRowStyle}>
+              <Text style={allStyles.subDetails}> Min: {this.state.temp_min}° </Text>
+            </View>
+          </View>
+
+          <View style={allStyles.twoSeparatViewsInRowStyle}>
+            <View style={allStyles.twoAdjacentViewsInRowStyle}>
+              <Image source={{uri:windIconSource}} style={allStyles.subDetailsImgStyle}/>
+              <Text style={allStyles.subDetails}> {this.state.wind_speed} </Text>
+            </View>
+            <View style={allStyles.twoAdjacentViewsInRowStyle}>
+              <Text style={allStyles.subDetails}> Max: {this.state.temp_max}° </Text>
+            </View>
+          </View>
+        </View>
+
         <View style={allStyles.bodyStyle}>
           <Image style={allStyles.bacgroundImgStyle}
             source={{uri: 'http://www.pngmart.com/files/3/Weather-PNG-Photos.png'}}
@@ -74,7 +109,7 @@ export default class App extends Component {
             searchWords={[phrases[this.state.weather].highlight]}
             textToHighlight={phrases[this.state.weather].title}
           />
-          <Text style={allStyles.subtitle}>{phrases[this.state.weather].subtitle}</Text>
+          <Text style={allStyles.subTitle}>{phrases[this.state.weather].subtitle}</Text>
           </Image>
         </View>
       </View>
@@ -194,6 +229,31 @@ const allStyles = StyleSheet.create({
    // backgroundColor: 'red',
     flexDirection:'row'
   },
+  twoSeparatViewsInRowStyle:{
+    alignContent: 'stretch',
+    alignItems:'baseline',
+    justifyContent:'space-between',
+    flex:1,
+    //backgroundColor: 'green',
+    flexDirection:'row'
+  },
+  twoAdjacentViewsInRowStyle:{
+    //width: 100,
+    alignItems:'center',
+    justifyContent:'flex-start',
+    flex:1,
+    //backgroundColor: 'blue',
+    flexDirection:'row',
+    marginLeft: 20,
+  },
+  subDetailsHeaderStyle:{
+    alignItems:'flex-start',
+    justifyContent:'flex-start',
+    flex:1,
+    flexDirection:'column',
+    marginTop: 60,
+    //backgroundColor: 'red',
+  },
   cityNameStyle:{
     textAlign: 'left',
     fontFamily:'HelveticaNeue-Bold',
@@ -220,18 +280,32 @@ const allStyles = StyleSheet.create({
     resizeMode:'contain',
     justifyContent: 'center',
   },
+  subDetailsImgStyle:{
+    flex: 0.4,
+    alignItems: 'flex-start',
+    width: 30,
+    height: 30,
+    resizeMode:'contain',
+    justifyContent: 'flex-start',
+  },
   title:{
     fontFamily:'HelveticaNeue-Bold',
     alignItems:'center',
-    fontSize:55,
+    fontSize:35,
     color:3007,
-    marginBottom:200,
+    marginTop:200,
   },
   subTitle:{
     fontFamily:'HelveticaNeue-Medium',
-    fontSize:24,
+    fontSize:20,
     color:'white',
-    marginBottom:-444
+    marginBottom:0
+  },
+  subDetails:{
+    fontFamily:'HelveticaNeue-Medium',
+    fontSize:20,
+    color:'white',
+    //marginLeft:-40
   }
 })
 
