@@ -17,10 +17,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {fetchWeather} from './weatherAPI'
 import Highlight from 'react-native-highlight-words'
 
-const humedIconSource= 'http://www.icon2s.com/img256/256x256-black-white-android-humidity.png';
-//TODO: replace the following link
-const windIconSource= 'http://www.icon2s.com/img256/256x256-black-white-android-humidity.png';
-
 export default class App extends Component {
 
   componentWillMount(){
@@ -80,8 +76,7 @@ export default class App extends Component {
         <View style={allStyles.subDetailsHeaderStyle}>
           <View style={allStyles.twoSeparatViewsInRowStyle}>
             <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Image source={{uri:humedIconSource}} style={allStyles.subDetailsImgStyle}/>
-              <Text style={allStyles.subDetails}> {this.state.humidity} </Text>
+              <Text style={allStyles.subDetails}> Humidity: {this.state.humidity}% </Text>
             </View>
             <View style={allStyles.twoAdjacentViewsInRowStyle}>
               <Text style={allStyles.subDetails}> Min: {this.state.temp_min}° </Text>
@@ -90,8 +85,7 @@ export default class App extends Component {
 
           <View style={allStyles.twoSeparatViewsInRowStyle}>
             <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Image source={{uri:windIconSource}} style={allStyles.subDetailsImgStyle}/>
-              <Text style={allStyles.subDetails}> {this.state.wind_speed} </Text>
+              <Text style={allStyles.subDetails}> Wind Speed: {this.state.wind_speed} km/h</Text>
             </View>
             <View style={allStyles.twoAdjacentViewsInRowStyle}>
               <Text style={allStyles.subDetails}> Max: {this.state.temp_max}° </Text>
@@ -244,7 +238,7 @@ const allStyles = StyleSheet.create({
     flex:1,
     //backgroundColor: 'blue',
     flexDirection:'row',
-    marginLeft: 20,
+    marginLeft: 30,
   },
   subDetailsHeaderStyle:{
     alignItems:'flex-start',
@@ -303,8 +297,8 @@ const allStyles = StyleSheet.create({
   },
   subDetails:{
     fontFamily:'HelveticaNeue-Medium',
-    fontSize:20,
-    color:'white',
+    fontSize:14,
+    color:3007,
     //marginLeft:-40
   }
 })
