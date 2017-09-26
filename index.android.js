@@ -11,11 +11,14 @@ import {
   Text,
   View,
   StatusBar,
-  Image
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {fetchWeather} from './weatherAPI'
 import Highlight from 'react-native-highlight-words'
+
+const forcastBtnSource= 'https://www.divinewebdesign.co.za/wp-content/uploads/2015/02/forecasting-icon.png';
 
 export default class App extends Component {
 
@@ -60,6 +63,10 @@ export default class App extends Component {
   //currentPositionOnSuccess(data){
 
   //}
+
+  _handlePress(event) {
+      console.log('Pressed!');
+  }
 
   render() {
     return(
@@ -109,6 +116,13 @@ export default class App extends Component {
           <Text style={allStyles.subTitle}>{phrases[this.state.weather].subtitle}</Text>
           </Image>
         </View>
+
+        <View style={allStyles.twoSeparatViewsInRowStyle}>
+        <TouchableOpacity onPress={this._handlePress}>
+          <Image style={allStyles.btnImgStyle} source={{uri: forcastBtnSource}}/>
+        </TouchableOpacity>
+        </View>
+
       </View>
     );
   }
@@ -291,6 +305,15 @@ const allStyles = StyleSheet.create({
     height: 30,
     resizeMode:'contain',
     justifyContent: 'flex-start',
+  },
+  btnImgStyle:{
+    flex: 1,
+    alignItems: 'flex-start',
+    width: 50,
+    height: 50,
+    resizeMode:'contain',
+    justifyContent: 'flex-start',
+    marginLeft: 30,
   },
   title:{
     fontFamily:'HelveticaNeue-Bold',
