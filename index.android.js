@@ -26,9 +26,10 @@ export default class App extends Component {
       temp: '--',
       humidity: '--',
       pressure: '--',
-      temp_min: '--',
-      temp_max: '--',
-      wind_speed: '--',
+      tempMin: '--',
+      tempMax: '--',
+      windSpeed: '--',
+      dt: '--',
       city: 'Unknown City'
     }
   }
@@ -45,9 +46,10 @@ export default class App extends Component {
           temp: Math.round(toCelsius(Math.round(res.temp))),
           humidity: res.humidity,
           pressure: res.pressure,
-          temp_min: Math.round(toCelsius(Math.round(res.temp_min))),
-          temp_max: Math.round(toCelsius(Math.round(res.temp_max))),
-          wind_speed: res.wind_speed,
+          tempMin: Math.round(toCelsius(Math.round(res.tempMin))),
+          tempMax: Math.round(toCelsius(Math.round(res.tempMax))),
+          windSpeed: res.windSpeed,
+          dt: new Date((res.dt)*1000).toString().split(" ", 5).join(" "),
           city: res.city
         })),
       (error) => alert(error),
@@ -65,7 +67,8 @@ export default class App extends Component {
         <StatusBar hidden={true}/>
 
         <View style= {allStyles.cityHeaderStyle}>
-          <Text style = {allStyles.cityNameStyle}> City: {this.state.city} </Text>
+          <Text style = {allStyles.cityNameStyle}>{this.state.city} </Text>
+          <Text style = {allStyles.dateTimeStyle}>Last Update: {this.state.dt} </Text>
         </View>
 
         <View style={allStyles.tempHeaderStyle}>
@@ -79,16 +82,16 @@ export default class App extends Component {
               <Text style={allStyles.subDetails}> Humidity: {this.state.humidity}% </Text>
             </View>
             <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Text style={allStyles.subDetails}> Min: {this.state.temp_min}° </Text>
+              <Text style={allStyles.subDetails}> Min: {this.state.tempMin}° </Text>
             </View>
           </View>
 
           <View style={allStyles.twoSeparatViewsInRowStyle}>
             <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Text style={allStyles.subDetails}> Wind Speed: {this.state.wind_speed} km/h</Text>
+              <Text style={allStyles.subDetails}> Wind Speed: {this.state.windSpeed} km/h</Text>
             </View>
             <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Text style={allStyles.subDetails}> Max: {this.state.temp_max}° </Text>
+              <Text style={allStyles.subDetails}> Max: {this.state.tempMax}° </Text>
             </View>
           </View>
         </View>
@@ -210,11 +213,11 @@ const allStyles = StyleSheet.create({
   },
   cityHeaderStyle:{
     //height: 40,
-    alignItems:'center', //horizontal
-    justifyContent:'flex-start', //vertical
+    alignItems:'flex-start', //horizontal
+    justifyContent:'center', //vertical
     flex:1,
     backgroundColor: 3007,
-    flexDirection:'row'
+    flexDirection:'column'
   },
   tempHeaderStyle:{
     alignItems:'center',
@@ -252,6 +255,13 @@ const allStyles = StyleSheet.create({
     textAlign: 'left',
     fontFamily:'HelveticaNeue-Bold',
     fontSize:20,
+    color:'white',
+    marginBottom: 0
+  },
+  dateTimeStyle:{
+    textAlign: 'left',
+    fontFamily:'HelveticaNeue-Bold',
+    fontSize:12,
     color:'white',
     marginBottom: 0
   },

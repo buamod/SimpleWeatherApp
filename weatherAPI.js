@@ -12,10 +12,11 @@ export const fetchWeather = (lat, lon) => {
 						temp: json.main.temp,
 						humidity: json.main.humidity,
 						pressure: json.main.pressure,
-						temp_min: json.main.temp_min,
-						temp_max: json.main.temp_max,
-						wind_speed: json.wind.speed,
+						tempMin: json.main.temp_min,
+						tempMax: json.main.temp_max,
+						windSpeed: json.wind.speed,
 						//rain: json.rain["3h"],
+						dt: json.dt,
 						city: json.name,
         }))
 
