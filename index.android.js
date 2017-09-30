@@ -107,6 +107,7 @@ export default class App extends Component {
           <Image style={allStyles.bacgroundImgStyle}
             source={{uri: 'http://www.pngmart.com/files/3/Weather-PNG-Photos.png'}}
           >
+          {/* <Image source={require('./images/sunny-sxc.jpg')} /> */}
           <Highlight
             style ={allStyles.title}
             highlightStyle={{color: phrases[this.state.weather].color}}
