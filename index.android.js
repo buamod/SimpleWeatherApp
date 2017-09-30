@@ -118,11 +118,11 @@ export default class App extends Component {
           </Image>
         </View>
 
-        <View style={allStyles.twoSeparatViewsInRowStyle}>
+        {/* <View style={allStyles.twoSeparatViewsInRowStyle}>
         <TouchableOpacity onPress={this._handlePress}>
           <Image style={allStyles.btnImgStyle} source={{uri: forcastBtnSource}}/>
         </TouchableOpacity>
-        </View>
+        </View> */}
 
       </View>
     );
