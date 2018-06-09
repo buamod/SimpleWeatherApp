@@ -1,3 +1,13 @@
+import App from './app/index';
+
+export default App;
+
+/* 
+The following commented code should be removed once IOS version is
+verified to be running as expected 
+*/
+
+/*
 import React, {Component} from 'react';
 import {
   View,
@@ -7,7 +17,7 @@ import {
   StatusBar
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {fetchWeather} from './weatherAPI'
+import {fetchWeather} from './app/weatherAPI'
 import Highlight from 'react-native-highlight-words'
 
 class App extends Component {
@@ -62,7 +72,7 @@ class App extends Component {
   render(){
     return(
   <View style={[allStyles.container, {backgroundColor:phrases[this.state.weather].background}]}>
-  {/* <StatusBar hidden={this.state.hideStatusBar}/>     */}
+  //{ <StatusBar hidden={this.state.hideStatusBar}/>     }
   <StatusBar hidden={true}/>    
   <View style={allStyles.headerStyle}>
   <Icon  name={iconNames[this.state.weather]} style={allStyles.iconStyle}/>  
@@ -208,3 +218,4 @@ subTitle:{
 
 
 AppRegistry.registerComponent('SimpleWeatherApp', () => App)
+*/
