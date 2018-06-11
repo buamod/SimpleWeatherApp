@@ -9,9 +9,10 @@ EStyleSheet.build({
   $white: '#FFFFFF',
   $primaryBlue: '#008080',
   $silver:'#C0C0C0',
+  $darkGrey: '#3a303a',
   $darkText: '#343434',
   //used for debug purposes only to show dimensions of elements
-  //outline:0
+  $outline: 1,
 });
 
 export default () => <Home/>;
