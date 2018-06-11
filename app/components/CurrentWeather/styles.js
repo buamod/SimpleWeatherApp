@@ -2,10 +2,10 @@ import EstyleSheet from 'react-native-extended-stylesheet';
 
 const styles= EstyleSheet.create({
   container:{
+    flex: 0.50,
     flexDirection: 'column',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    marginVertical: 20,
     //height: 200,
   },
   iconWeatherCondContainer:{
@@ -33,17 +33,17 @@ const styles= EstyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: 20,
   },
   twoTextsCol:{
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    paddingHorizontal: 20,
+    alignItems: 'center',
+    paddingHorizontal: 40,
   },
   subText:{
     fontFamily:'HelveticaNeue-Medium',
-    fontSize:14,
+    fontSize:12,
     color:'$white',
   }
 });

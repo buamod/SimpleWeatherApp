@@ -14,7 +14,7 @@ import Highlight from 'react-native-highlight-words'
 
 const defaultState = {
   cityName: 'Ottawa',
-  lastUpdated: 'date + time',
+  lastUpdatedTime: 'date + time',
   currentWeather: {
     weatherCond: 'Default',
     temp: '20',
