@@ -26,6 +26,27 @@ const CurrentWeather= ({weatherCond, temp, minTemp, maxTemp, humidity, windSpeed
     <Text style= {styles.tempNumber}>
       {temp}°
     </Text>
+    <View style= {styles.subWeatherDetailsContainer}>
+      <View style= {styles.twoTextsCol}>
+        <Text style= {styles.subText}>
+          Min: {minTemp}°
+        </Text>
+        <Text style= {styles.subText}>
+          Max: {maxTemp}°
+        </Text>
+      </View>
+      <View style= {styles.twoTextsCol}>
+        <Text style= {styles.subText}>
+          Humidity: {humidity}%
+        </Text>
+        <Text style= {styles.subText}>
+          Wind Speed: {windSpeed} km/h
+        </Text>
+      </View>
+    </View>
+    <Text style= {styles.subText}>
+      Last Updated: {lastUpdatedTime}
+    </Text>
   </View>
 );
 
