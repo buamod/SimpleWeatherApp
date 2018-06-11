@@ -7,62 +7,94 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import { Container } from '../components/Container';
+import { Header } from '../components/Header';
+import { DayWeatherDetails } from '../components/DayWeatherDetails';
+import { FutureDaysWeather } from '../components/FutureDaysWeather';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {fetchWeather} from '../weatherAPI'
 import Highlight from 'react-native-highlight-words'
 
-const forcastBtnSource= 'https://www.divinewebdesign.co.za/wp-content/uploads/2015/02/forecasting-icon.png';
+const defaultState = {
+  cityName: 'Ottawa',
+  lastUpdated: 'date + time',
+  currentWeather: {
+    weatherCond: 'Default',
+    temp: '20',
+    minTemp: '20',
+    maxTemp: '20',
+    humidity: '20',
+    windSpeed: '20',
+  },
+  futureDaysWeather:{
+    Day1: {
+      day: 'Saturday',
+      weatherCond: 'Default',
+      minTemp: '20',
+      maxTemp: '20', 
+    },
+    Day2: {
+      day: 'Sunday',
+      weatherCond: 'Default',
+      minTemp: '20',
+      maxTemp: '20', 
+    },
+    Day3: {
+      day: 'Monday',
+      weatherCond: 'Default',
+      minTemp: '20',
+      maxTemp: '20', 
+    },
+  }
+
+}
 
 class Home extends Component {
-
   componentWillMount(){
-  //  this.state = {hideStatusBar:false}
-    this.state = {
-      weather: 'Default',
-      temp: '--',
-      humidity: '--',
-      pressure: '--',
-      tempMin: '--',
-      tempMax: '--',
-      windSpeed: '--',
-      dt: '--',
-      city: 'Unknown City'
-    }
-  }
+    this.state = defaultState
+  };
 
   componentDidMount(){
-    this.getlocation()
-  }
+    weatherDataObj = this.getWeatherData()
+    if (weatherDataObj != null){
+      this.setState(weatherDataObj)
+    }
+  };
 
-  getlocation(){
-    navigator.geolocation.getCurrentPosition(
-      (postData) => fetchWeather(postData.coords.latitude, postData.coords.longitude)
-        .then (res => this.setState({
-          weather: res.weather,
-          temp: Math.round(toCelsius(Math.round(res.temp))),
-          humidity: res.humidity,
-          pressure: res.pressure,
-          tempMin: Math.round(toCelsius(Math.round(res.tempMin))),
-          tempMax: Math.round(toCelsius(Math.round(res.tempMax))),
-          windSpeed: res.windSpeed,
-          dt: new Date((res.dt)*1000).toString().split(" ", 5).join(" "),
-          city: res.city
-        })),
-      (error) => alert(error),
-      {timeout:10000}
-    )
-  }
+  getWeatherData(){
+    //for now, return default object
+    return defaultState
+    /*TODO: Fetch weather data from API*/
+  };
 
-  //currentPositionOnSuccess(data){
-
-  //}
-
-  _handlePress(event) {
-      console.log('Pressed!');
-  }
+  handleOptionsPress= ()=> {
+    console.log('handle options press');
+  };
 
   render() {
     return(
+      <Container>
+        <StatusBar translucent={false} barStyle='light-content'/>
+        <Header
+          cityName= {this.state.cityName}
+          onPress= {this.handleOptionsPress}
+        />
+        <DayWeatherDetails
+          /*
+          weatherCond= {this.state.currentWeather.weatherCond}
+          temp= {this.state.currentWeather.temp}
+          minTemp= {this.state.currentWeather.minTemp}
+          maxTemp= {this.state.currentWeather.maxTemp}
+          humidity= {this.state.currentWeather.humidity}
+          windSpeed= {this.state.currentWeather.windSpeed}
+          lastUpdatedTime= {this.state.lastUpdatedTime}
+          */
+        />
+        <FutureDaysWeather
+
+        />
+      </Container>      
+/*
       <View style={[allStyles.container, {backgroundColor:phrases[this.state.weather].background}]}>
         <StatusBar hidden={true}/>
 
@@ -100,7 +132,6 @@ class Home extends Component {
           <Image style={allStyles.bacgroundImgStyle}
             source={{uri: 'http://www.pngmart.com/files/3/Weather-PNG-Photos.png'}}
           >
-          {/* <Image source={require('./images/sunny-sxc.jpg')} /> */}
           <Highlight
             style ={allStyles.title}
             highlightStyle={{color: phrases[this.state.weather].color}}
@@ -110,18 +141,13 @@ class Home extends Component {
           <Text style={allStyles.subTitle}>{phrases[this.state.weather].subtitle}</Text>
           </Image>
         </View>
-
-        {/* <View style={allStyles.twoSeparatViewsInRowStyle}>
-        <TouchableOpacity onPress={this._handlePress}>
-          <Image style={allStyles.btnImgStyle} source={{uri: forcastBtnSource}}/>
-        </TouchableOpacity>
-        </View> */}
-
       </View>
+*/
     );
   }
 }
 
+/*
 function toCelsius(k) {
   return k - 273.15
 }
@@ -195,7 +221,7 @@ const phrases = {
 		background: "#1FBB68"
 	},
 }
-/*
+
 const imageSources = {
   //All weather states have the same image for testing only
 	Default: './weatherImages/default.jpg',
@@ -207,7 +233,7 @@ const imageSources = {
   Drizzle: './weatherImages/default.jpg',
   Mist: './weatherImages/default.jpg',
 }
-*/
+
 const allStyles = StyleSheet.create({
   container:{
     flex:1,
@@ -329,5 +355,6 @@ const allStyles = StyleSheet.create({
     //marginLeft:-40
   }
 })
+*/
 
 export default Home;
