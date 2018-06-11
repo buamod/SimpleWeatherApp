@@ -5,13 +5,20 @@ import styles from './styles';
 
 const Header= ({ cityName, onPress })=> (
   <View style= {styles.container}>
-    <Text style= {styles.cityName}>
-      {cityName}
-    </Text>
-    <TouchableOpacity style= {styles.button} onPress= {onPress}>
+    <TouchableOpacity style= {styles.leftButton} onPress= {onPress}>
       <Image resizeMode= 'contain' style= {styles.icon} source= {require('./images/gear.png')}/>
     </TouchableOpacity>
-
+    <View style= {styles.headline}>
+      <Text style= {styles.cityName}>
+        {cityName}
+      </Text>
+      <Text style= {styles.date}>
+        Default Date
+      </Text>
+    </View>
+    <TouchableOpacity style= {styles.rightButton} onPress= {onPress}>
+      <Image resizeMode= 'contain' style= {styles.icon} source= {require('./images/gear.png')}/>
+    </TouchableOpacity>
   </View>
 );
 

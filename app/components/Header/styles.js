@@ -1,5 +1,7 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { StatusBar } from 'react-native';
+import { StatusBar, Dimensions} from 'react-native';
+
+const headerHeight= Dimensions.get('window').height/8;
 
 const styles= EStyleSheet.create({
   container: {
@@ -12,28 +14,45 @@ const styles= EStyleSheet.create({
     top: 0,
     //add extra padding for ios only
     '@media ios':{
-      paddingTop: 20,
+      //paddingTop: 20,
     },
     '@media android':{
-      paddingTop: StatusBar.currentHeight,
+      //paddingTop: StatusBar.currentHeight,
     },
-    backgroundColor: '$primaryBlue',
-    height: 70,
+    backgroundColor: '$darkGrey',
+    height: headerHeight,
   },
-  button:{
+  leftButton:{
     alignSelf: 'flex-end',
-    paddingRight: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   icon:{
-    width: 40,
+    width: 30,
+  },
+  headline:{
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   cityName:{
     fontFamily:'HelveticaNeue-Bold',
-    fontSize:35,
+    fontSize:30,
     color:'$white',
-    alignSelf: 'flex-start',
-    paddingLeft: 20,
-  }
+    alignSelf: 'center',
+  },
+  date:{
+    fontFamily:'HelveticaNeue-Bold',
+    fontSize:20,
+    color:'$white',
+    alignSelf: 'center',
+  },
+  rightButton:{
+    alignSelf: 'flex-end',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
  });
 
  export default styles;
