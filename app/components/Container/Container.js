@@ -1,21 +1,15 @@
 import React, {PropTypes} from 'react';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 
 import styles from './styles';
 
 const Container= ({ children })=>(
     <View style= {styles.container}>
-      <Image 
-        source= {require('./images/background.jpg')}
-        resizeMode= 'cover'
-        style={styles.backgroundImage}
-      >
-        {children}
-      </Image>
+      {children}
     </View>
 );
 
-Container.PropTypes= {
+Container .PropTypes= {
   children: PropTypes.any,
 };
 

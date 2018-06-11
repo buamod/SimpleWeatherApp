@@ -7,12 +7,8 @@ import { Tabs, RootStack } from './config/navigation';
 EStyleSheet.build({
   $hairlineWidth: StyleSheet.hairlineWidth,
   $white: '#FFFFFF',
-  $primaryBlue: '#2d5dc4',
-  $border: '#E2E2E2',
-  $inputText: '#797979',
-
+  $primaryBlue: '#008080',
   $silver:'#C0C0C0',
-  $darkGrey: '#3a303a',
   $darkText: '#343434',
   //used for debug purposes only to show dimensions of elements
   //$outline: 1,
