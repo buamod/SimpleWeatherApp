@@ -4,13 +4,12 @@ import {
   Text,
   View,
   StatusBar,
-  Image,
   TouchableOpacity,
 } from 'react-native';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
-import { DayWeatherDetails } from '../components/DayWeatherDetails';
-import { FutureDaysWeather } from '../components/FutureDaysWeather';
+import { CurrentWeather } from '../components/CurrentWeather';
+//import { Forcast } from '../components/Forcast';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {fetchWeather} from '../weatherAPI'
 import Highlight from 'react-native-highlight-words'
@@ -26,7 +25,7 @@ const defaultState = {
     humidity: '20',
     windSpeed: '20',
   },
-  futureDaysWeather:{
+  forcastSummary:{
     Day1: {
       day: 'Saturday',
       weatherCond: 'Default',
@@ -79,8 +78,7 @@ class Home extends Component {
           cityName= {this.state.cityName}
           onPress= {this.handleOptionsPress}
         />
-        <DayWeatherDetails
-          /*
+        <CurrentWeather
           weatherCond= {this.state.currentWeather.weatherCond}
           temp= {this.state.currentWeather.temp}
           minTemp= {this.state.currentWeather.minTemp}
@@ -88,10 +86,6 @@ class Home extends Component {
           humidity= {this.state.currentWeather.humidity}
           windSpeed= {this.state.currentWeather.windSpeed}
           lastUpdatedTime= {this.state.lastUpdatedTime}
-          */
-        />
-        <FutureDaysWeather
-
         />
       </Container>      
 /*

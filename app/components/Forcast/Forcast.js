@@ -3,13 +3,13 @@ import { View } from 'react-native';
 
 import styles from './styles';
 
-const FutureDaysWeather= ()=> (
+const Forcast= ()=> (
   <View style= {styles.container}>
 
   </View>
 );
 
-export default FutureDaysWeather;
+export default Forcast;
 
     /*
         inside the View

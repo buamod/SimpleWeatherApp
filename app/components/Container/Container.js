@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 
 import styles from './styles';
 
@@ -9,7 +9,7 @@ const Container= ({ children })=>(
     </View>
 );
 
-Container .PropTypes= {
+Container.PropTypes= {
   children: PropTypes.any,
 };
 
