@@ -6,8 +6,8 @@ import {
 } from 'react-native';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
-import { DayWeatherDetails } from '../components/DayWeatherDetails';
-import { FutureDaysWeather } from '../components/FutureDaysWeather';
+import { CurrentWeather } from '../components/CurrentWeather';
+import { Forcast } from '../components/Forcast';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {fetchWeather} from '../weatherAPI'
 import Highlight from 'react-native-highlight-words'
@@ -23,27 +23,26 @@ const defaultState = {
     humidity: '20',
     windSpeed: '20',
   },
-  futureDaysWeather:{
-    Day1: {
-      day: 'Saturday',
-      weatherCond: 'Default',
+  forcastSummaries:[
+    {
+      day: 'Sat',
+      weatherCond: 'Rain',
       minTemp: '20',
       maxTemp: '20', 
     },
-    Day2: {
-      day: 'Sunday',
-      weatherCond: 'Default',
+    {
+      day: 'Sun',
+      weatherCond: 'Rain',
       minTemp: '20',
       maxTemp: '20', 
     },
-    Day3: {
-      day: 'Monday',
-      weatherCond: 'Default',
+    {
+      day: 'Mon',
+      weatherCond: 'Rain',
       minTemp: '20',
       maxTemp: '20', 
     },
-  }
-
+  ]
 }
 
 class Home extends Component {
@@ -90,56 +89,12 @@ class Home extends Component {
         <FutureDaysWeather
 
         />
-      </Container>      
-/*
-      <View style={[allStyles.container, {backgroundColor:phrases[this.state.weather].background}]}>
-        <StatusBar hidden={true}/>
-
-        <View style= {allStyles.cityHeaderStyle}>
-          <Text style = {allStyles.cityNameStyle}>{this.state.city} </Text>
-          <Text style = {allStyles.dateTimeStyle}>Last Update: {this.state.dt} </Text>
-        </View>
-
-        <View style={allStyles.tempHeaderStyle}>
-          <Icon  name={iconNames[this.state.weather]} style={allStyles.iconStyle}/>
-          <Text style={allStyles.temp}> {this.state.temp}° </Text>
-        </View>
-
-        <View style={allStyles.subDetailsHeaderStyle}>
-          <View style={allStyles.twoSeparatViewsInRowStyle}>
-            <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Text style={allStyles.subDetails}> Humidity: {this.state.humidity}% </Text>
-            </View>
-            <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Text style={allStyles.subDetails}> Min: {this.state.tempMin}° </Text>
-            </View>
-          </View>
-
-          <View style={allStyles.twoSeparatViewsInRowStyle}>
-            <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Text style={allStyles.subDetails}> Wind Speed: {this.state.windSpeed} km/h</Text>
-            </View>
-            <View style={allStyles.twoAdjacentViewsInRowStyle}>
-              <Text style={allStyles.subDetails}> Max: {this.state.tempMax}° </Text>
-            </View>
-          </View>
-        </View>
-
-        <View style={allStyles.bodyStyle}>
-          <Image style={allStyles.bacgroundImgStyle}
-            source={{uri: 'http://www.pngmart.com/files/3/Weather-PNG-Photos.png'}}
-          >
-          <Highlight
-            style ={allStyles.title}
-            highlightStyle={{color: phrases[this.state.weather].color}}
-            searchWords={[phrases[this.state.weather].highlight]}
-            textToHighlight={phrases[this.state.weather].title}
-          />
-          <Text style={allStyles.subTitle}>{phrases[this.state.weather].subtitle}</Text>
-          </Image>
-        </View>
-      </View>
-*/
+        <Forcast
+          tomorrow= {this.state.forcastSummaries[0]}
+          afterTomorrow= {this.state.forcastSummaries[1]}
+          afterAfterTomorrow= {this.state.forcastSummaries[2]}
+        />
+      </Container>
     );
   }
 }
