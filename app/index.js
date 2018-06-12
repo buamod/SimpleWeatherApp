@@ -12,7 +12,7 @@ EStyleSheet.build({
   $darkGrey: '#3a303a',
   $darkText: '#343434',
   //used for debug purposes only to show dimensions of elements
-  //$outline: 1,
+  $outline: 1,
 });
 
 export default () => <Home/>;

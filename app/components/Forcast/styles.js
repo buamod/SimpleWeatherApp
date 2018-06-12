@@ -3,9 +3,9 @@ import EstyleSheet from 'react-native-extended-stylesheet';
 const styles= EstyleSheet.create({
   container:{
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
 });
 

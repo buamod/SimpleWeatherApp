@@ -23,7 +23,7 @@ const styles= EStyleSheet.create({
     width: headerWidth,
   },
   leftButton:{
-    //alignSelf: 'flex-end',
+    alignSelf: 'flex-start',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
@@ -53,6 +53,8 @@ const styles= EStyleSheet.create({
   },
   rightButton:{
     alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 20,
   },
