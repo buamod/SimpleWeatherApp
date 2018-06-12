@@ -7,10 +7,10 @@ const imageWidth= Dimensions.get('window').width;
 export default EStyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '$primaryBlue',
+    //flexDirection: 'column',
+    //alignItems: 'center',
+    //justifyContent: 'space-between',
+    //backgroundColor: '$primaryBlue',
   },
   backgroundImage:{
     height: imageHeight,
