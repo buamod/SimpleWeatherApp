@@ -4,10 +4,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 
-const Header= ({ cityName, onPress })=> (
+const Header= ({ cityName, onMenuButtPress, onInfoButtPress })=> (
   <View style= {styles.container}>
-    <TouchableOpacity style= {styles.leftButton} onPress= {onPress}>
-      <Icon name={'md-add'}  style= {styles.icon}> </Icon>
+    <TouchableOpacity style= {styles.leftButton} onPress= {onMenuButtPress}>
+      <Icon name={'md-menu'}  style= {styles.icon}> </Icon>
     </TouchableOpacity>
     <View style= {styles.headline}>
       <Text style= {styles.cityName}>
@@ -17,15 +17,16 @@ const Header= ({ cityName, onPress })=> (
         Default Date
       </Text>
     </View>
-    <TouchableOpacity style= {styles.rightButton} onPress= {onPress}>
-      <Icon name={'md-add'}  style= {styles.icon}> </Icon>
+    <TouchableOpacity style= {styles.rightButton} onPress= {onInfoButtPress}>
+      <Icon name={'md-information-circle'}  style= {styles.icon}> </Icon>
     </TouchableOpacity>
   </View>
 );
 
 Header.PropTypes={
     cityName: PropTypes.string,
-    onPress: PropTypes.func,
+    onMenuButtPress: PropTypes.func,
+    onInfoButtPress: PropTypes.func,
 };
 
 export default Header;

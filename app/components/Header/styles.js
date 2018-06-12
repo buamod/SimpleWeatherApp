@@ -23,12 +23,15 @@ const styles= EStyleSheet.create({
     width: headerWidth,
   },
   leftButton:{
-    alignSelf: 'flex-end',
+    //alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 20,
   },
   icon:{
-    width: 30,
+    fontSize: 30,
+    color: 'white',
   },
   headline:{
     flexDirection: 'column',
