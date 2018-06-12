@@ -2,8 +2,9 @@ import EstyleSheet from 'react-native-extended-stylesheet';
 
 const styles= EstyleSheet.create({
   container:{
-    height: 100,
-    backgroundColor: 'grey'
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
 });
 
