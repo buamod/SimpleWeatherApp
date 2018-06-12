@@ -15,7 +15,7 @@ const styles= EstyleSheet.create({
   },
   icon:{
     //resizeMode: 'contain',
-    fontSize: 30,
+    fontSize: 40,
     color: 'yellow',
   },
   weatherCond:{
