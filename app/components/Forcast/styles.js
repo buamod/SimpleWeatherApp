@@ -5,6 +5,7 @@ const styles= EstyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    marginBottom: 20,
   },
 });
 

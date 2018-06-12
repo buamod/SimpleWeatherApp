@@ -1,12 +1,13 @@
 import React, {PropTypes} from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 
 const Header= ({ cityName, onPress })=> (
   <View style= {styles.container}>
     <TouchableOpacity style= {styles.leftButton} onPress= {onPress}>
-      <Image resizeMode= 'contain' style= {styles.icon} source= {require('./images/gear.png')}/>
+      <Icon name={'md-add'}  style= {styles.icon}> </Icon>
     </TouchableOpacity>
     <View style= {styles.headline}>
       <Text style= {styles.cityName}>
@@ -17,7 +18,7 @@ const Header= ({ cityName, onPress })=> (
       </Text>
     </View>
     <TouchableOpacity style= {styles.rightButton} onPress= {onPress}>
-      <Image resizeMode= 'contain' style= {styles.icon} source= {require('./images/gear.png')}/>
+      <Icon name={'md-add'}  style= {styles.icon}> </Icon>
     </TouchableOpacity>
   </View>
 );
