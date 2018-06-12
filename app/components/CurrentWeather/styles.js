@@ -43,7 +43,7 @@ const styles= EstyleSheet.create({
   },
   subText:{
     fontFamily:'HelveticaNeue-Medium',
-    fontSize:12,
+    fontSize:14,
     color:'$white',
   }
 });
