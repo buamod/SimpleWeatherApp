@@ -1,10 +1,10 @@
 import React, {PropTypes} from 'react';
-import { ScrollView, Image } from 'react-native';
+import { View, Image } from 'react-native';
 
 import styles from './styles';
 
 const Container= ({ children })=>(
-    <ScrollView style= {styles.container}>
+    <View style= {styles.container}>
       <Image 
         source= {require('./images/background.jpg')}
         resizeMode= 'cover'
@@ -12,7 +12,7 @@ const Container= ({ children })=>(
       >
         {children}
       </Image>
-    </ScrollView>
+    </View>
 );
 
 Container .PropTypes= {

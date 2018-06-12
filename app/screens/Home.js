@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
-  Image,
-  View,
+  ScrollView,
   StatusBar,
-  RefreshControl,
 } from 'react-native';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
@@ -75,6 +72,7 @@ class Home extends Component {
 
   render() {
     return(
+      <ScrollView>
       <Container>
         <StatusBar translucent={false} barStyle='light-content'/>
         <Header
@@ -102,6 +100,7 @@ class Home extends Component {
           afterAfterTomorrow= {this.state.forcastSummaries[2]}
         />
       </Container>
+      </ScrollView>
     );
   }
 }
