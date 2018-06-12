@@ -5,6 +5,7 @@ const styles= EstyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 20,
     //height: 200,
   },
   day:{
