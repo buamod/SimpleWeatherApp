@@ -7,7 +7,7 @@ import Home from './screens/Home';
 //Build stylesheet with variable values
 EStyleSheet.build({
   $white: '#FFFFFF',
-  $primaryBlue: '#008080',
+  $primaryBlue: '#2d5dc4',
   $silver:'#C0C0C0',
   $darkGrey: '#3a303a',
   $darkText: '#343434',
