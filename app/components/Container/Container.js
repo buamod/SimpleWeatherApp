@@ -5,7 +5,13 @@ import styles from './styles';
 
 const Container= ({ children })=>(
     <View style= {styles.container}>
-      {children}
+      <Image 
+        source= {require('./images/background.jpg')}
+        resizeMode= 'cover'
+        style={styles.backgroundImage}
+      >
+        {children}
+      </Image>
     </View>
 );
 

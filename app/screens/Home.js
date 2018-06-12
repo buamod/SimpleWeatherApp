@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {
-  ScrollView,
+  StyleSheet,
+  Image,
+  View,
   StatusBar,
   RefreshControl,
 } from 'react-native';
