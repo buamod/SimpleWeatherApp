@@ -65,8 +65,12 @@ class Home extends Component {
     /*TODO: Fetch weather data from API*/
   };
 
-  handleOptionsPress= ()=> {
-    console.log('handle options press');
+  handleMenuPress= ()=> {
+    console.log('Menu button pressed');
+  };
+
+  handleInfoPress= ()=> {
+    console.log('Info button pressed');
   };
 
   render() {
@@ -75,7 +79,8 @@ class Home extends Component {
         <StatusBar translucent={false} barStyle='light-content'/>
         <Header
           cityName= {this.state.cityName}
-          onPress= {this.handleOptionsPress}
+          onMenuButtPress= {this.handleMenuPress}
+          onInfoButtPress= {this.handleInfoPress}
         />
         <CurrentWeather
           weatherCond= {this.state.currentWeather.weatherCond}
