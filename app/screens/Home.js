@@ -92,7 +92,7 @@ class Home extends Component {
 
   getWeatherData(){
     /*Should return null in failure case */
-    
+
     //for now, return default weather data object
     return defaultWeatherData;
     /*TODO: Fetch weather data from API*/
@@ -101,20 +101,21 @@ class Home extends Component {
   _onRefresh=()=> {
     console.log('Screen refreshed');
     this.setState({
+      ...this.state,
       refreshing: true,
-      weatherDtata: this.state.weatherDtata,
     });
     newWeatherDtata= this.getWeatherData()
     if (newWeatherDtata != null){
       this.setState({
+        ...this.state,
         refreshing: false,
         weatherDtata: newWeatherDtata,
       });
     } else{
       /*TODO: log an alert */
       this.setState({
+        ...this.state,
         refreshing: false,
-        weatherDtata: this.state.weatherDtata,
       });
     }
   }
