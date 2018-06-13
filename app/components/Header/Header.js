@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 
-const Header= ({ cityName, onMenuButtPress, onRefreshButtPress })=> (
+const Header= ({ cityName, onMenuButtPress, onInfoButtPress })=> (
   <View style= {styles.container}>
     <TouchableOpacity style= {styles.leftButton} onPress= {onMenuButtPress}>
       <Icon name={'md-menu'}  style= {styles.icon}> </Icon>
@@ -17,7 +17,7 @@ const Header= ({ cityName, onMenuButtPress, onRefreshButtPress })=> (
         Default Date
       </Text>
     </View>
-    <TouchableOpacity style= {styles.rightButton} onPress= {onRefreshButtPress}>
+    <TouchableOpacity style= {styles.rightButton} onPress= {onInfoButtPress}>
       <Icon name={'md-information-circle'}  style= {styles.icon}> </Icon>
     </TouchableOpacity>
   </View>
