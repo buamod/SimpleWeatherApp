@@ -8,9 +8,9 @@ import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { CurrentWeather } from '../components/CurrentWeather';
 import { Forcast } from '../components/Forcast';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { DeveloperInfo } from '../components/DeveloperInfo';
+
 import {fetchWeather} from '../weatherAPI'
-import Highlight from 'react-native-highlight-words'
 
 const defaultWeatherData = {
   cityName: 'Ottawa',
@@ -82,6 +82,7 @@ class Home extends Component {
   componentWillMount(){
     this.state = {
       refreshing: false,
+      isDevInfoVisible: false,
       weatherDtata: initialWeatherData,
     }
   };
@@ -126,8 +127,25 @@ class Home extends Component {
 
   handleInfoPress= ()=> {
     console.log('Info button pressed');
+    this.showDevInfo();
   };
 
+  _setDevInfoVisibility= (visible)=>{
+    this.setState({
+      ...this.state,
+      isDevInfoVisible: visible,
+    });
+  };
+
+  showDevInfo= ()=>{
+    console.log('Will show developer info');
+    this._setDevInfoVisibility(true);
+  };
+
+  handleExitDevInfo= ()=>{
+    console.log('Will hide developer info');
+    this._setDevInfoVisibility(false);
+  };
 
   render() {
     return(
@@ -139,28 +157,32 @@ class Home extends Component {
           />
         }
       >
-      <Container>
-        <StatusBar translucent={false} barStyle='light-content'/>
-        <Header
-          cityName= {this.state.weatherDtata.cityName}
-          onMenuButtPress= {this.handleMenuPress}
-          onInfoButtPress= {this.handleInfoPress}
-        />
-        <CurrentWeather
-          weatherCond= {this.state.weatherDtata.currentWeather.weatherCond}
-          temp= {this.state.weatherDtata.currentWeather.temp}
-          minTemp= {this.state.weatherDtata.currentWeather.minTemp}
-          maxTemp= {this.state.weatherDtata.currentWeather.maxTemp}
-          humidity= {this.state.weatherDtata.currentWeather.humidity}
-          windSpeed= {this.state.weatherDtata.currentWeather.windSpeed}
-          lastUpdatedTime= {this.state.weatherDtata.lastUpdatedTime}
-        />
-        <Forcast
-          tomorrow= {this.state.weatherDtata.forcastSummaries[0]}
-          afterTomorrow= {this.state.weatherDtata.forcastSummaries[1]}
-          afterAfterTomorrow= {this.state.weatherDtata.forcastSummaries[2]}
-        />
-      </Container>
+        <Container>
+          <StatusBar translucent={false} barStyle='light-content'/>
+          <Header
+            cityName= {this.state.weatherDtata.cityName}
+            onMenuButtonPress= {this.handleMenuPress}
+            onInfoButtonPress= {this.handleInfoPress}
+          />
+          <DeveloperInfo
+            visible= {this.state.isDevInfoVisible}
+            onExitButtonPress= {this.handleExitDevInfo}
+          />
+          <CurrentWeather
+            weatherCond= {this.state.weatherDtata.currentWeather.weatherCond}
+            temp= {this.state.weatherDtata.currentWeather.temp}
+            minTemp= {this.state.weatherDtata.currentWeather.minTemp}
+            maxTemp= {this.state.weatherDtata.currentWeather.maxTemp}
+            humidity= {this.state.weatherDtata.currentWeather.humidity}
+            windSpeed= {this.state.weatherDtata.currentWeather.windSpeed}
+            lastUpdatedTime= {this.state.weatherDtata.lastUpdatedTime}
+          />
+          <Forcast
+            tomorrow= {this.state.weatherDtata.forcastSummaries[0]}
+            afterTomorrow= {this.state.weatherDtata.forcastSummaries[1]}
+            afterAfterTomorrow= {this.state.weatherDtata.forcastSummaries[2]}
+          />
+        </Container>
       </ScrollView>
     );
   }
