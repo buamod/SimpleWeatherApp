@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   ScrollView,
   StatusBar,
+  RefreshControl,
 } from 'react-native';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
@@ -11,7 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {fetchWeather} from '../weatherAPI'
 import Highlight from 'react-native-highlight-words'
 
-const defaultState = {
+const defaultWeatherData = {
   cityName: 'Ottawa',
   lastUpdatedTime: 'date + time',
   currentWeather: {
@@ -44,23 +45,79 @@ const defaultState = {
   ]
 }
 
+const initialWeatherData = {
+  cityName: '----',
+  lastUpdatedTime: '---- + ----',
+  currentWeather: {
+    weatherCond: 'Default',
+    temp: '--',
+    minTemp: '--',
+    maxTemp: '--',
+    humidity: '--',
+    windSpeed: '--',
+  },
+  forcastSummaries:[
+    {
+      day: '---',
+      weatherCond: 'Default',
+      minTemp: '--',
+      maxTemp: '--', 
+    },
+    {
+      day: '---',
+      weatherCond: 'Default',
+      minTemp: '--',
+      maxTemp: '--', 
+    },
+    {
+      day: '---',
+      weatherCond: 'Default',
+      minTemp: '--',
+      maxTemp: '--', 
+    },
+  ]
+}
+
 class Home extends Component {
   componentWillMount(){
-    this.state = defaultState
-  };
-
-  componentDidMount(){
-    weatherDataObj = this.getWeatherData()
-    if (weatherDataObj != null){
-      this.setState(weatherDataObj)
+    this.state = {
+      refreshing: false,
+      weatherDtata: initialWeatherData,
     }
   };
 
+  componentDidMount(){
+    this._onRefresh();
+  };
+
   getWeatherData(){
-    //for now, return default object
-    return defaultState
+    /*Should return null in failure case */
+    
+    //for now, return default weather data object
+    return defaultWeatherData;
     /*TODO: Fetch weather data from API*/
   };
+
+  _onRefresh=()=> {
+    console.log('Screen refreshed');
+    this.setState({
+      refreshing: true,
+      weatherDtata: this.state.weatherDtata,
+    });
+    newWeatherDtata= this.getWeatherData()
+    if (newWeatherDtata != null){
+      this.setState({
+        refreshing: false,
+        weatherDtata: newWeatherDtata,
+      });
+    } else{
+      /*TODO: log an alert */
+      this.setState({
+        refreshing: false,
+        weatherDtata: this.state.weatherDtata,
+      });
+    }
+  }
 
   handleMenuPress= ()=> {
     console.log('Menu button pressed');
@@ -70,29 +127,37 @@ class Home extends Component {
     console.log('Refresh button pressed');
   };
 
+
   render() {
     return(
-      <ScrollView>
+      <ScrollView
+        refreshControl= {
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+        }
+      >
       <Container>
         <StatusBar translucent={false} barStyle='light-content'/>
         <Header
-          cityName= {this.state.cityName}
+          cityName= {this.state.weatherDtata.cityName}
           onMenuButtPress= {this.handleMenuPress}
           onRefreshButtPress= {this.handleRefreshPress}
         />
         <CurrentWeather
-          weatherCond= {this.state.currentWeather.weatherCond}
-          temp= {this.state.currentWeather.temp}
-          minTemp= {this.state.currentWeather.minTemp}
-          maxTemp= {this.state.currentWeather.maxTemp}
-          humidity= {this.state.currentWeather.humidity}
-          windSpeed= {this.state.currentWeather.windSpeed}
-          lastUpdatedTime= {this.state.lastUpdatedTime}
+          weatherCond= {this.state.weatherDtata.currentWeather.weatherCond}
+          temp= {this.state.weatherDtata.currentWeather.temp}
+          minTemp= {this.state.weatherDtata.currentWeather.minTemp}
+          maxTemp= {this.state.weatherDtata.currentWeather.maxTemp}
+          humidity= {this.state.weatherDtata.currentWeather.humidity}
+          windSpeed= {this.state.weatherDtata.currentWeather.windSpeed}
+          lastUpdatedTime= {this.state.weatherDtata.lastUpdatedTime}
         />
         <Forcast
-          tomorrow= {this.state.forcastSummaries[0]}
-          afterTomorrow= {this.state.forcastSummaries[1]}
-          afterAfterTomorrow= {this.state.forcastSummaries[2]}
+          tomorrow= {this.state.weatherDtata.forcastSummaries[0]}
+          afterTomorrow= {this.state.weatherDtata.forcastSummaries[1]}
+          afterAfterTomorrow= {this.state.weatherDtata.forcastSummaries[2]}
         />
       </Container>
       </ScrollView>
