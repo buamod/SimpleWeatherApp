@@ -18,7 +18,7 @@ const Header= ({ cityName, onMenuButtPress, onRefreshButtPress })=> (
       </Text>
     </View>
     <TouchableOpacity style= {styles.rightButton} onPress= {onRefreshButtPress}>
-      <Icon name={'md-refresh'}  style= {styles.icon}> </Icon>
+      <Icon name={'md-information-circle'}  style= {styles.icon}> </Icon>
     </TouchableOpacity>
   </View>
 );
