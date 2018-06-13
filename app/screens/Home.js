@@ -124,8 +124,8 @@ class Home extends Component {
     console.log('Menu button pressed');
   };
 
-  handleRefreshPress= ()=> {
-    console.log('Refresh button pressed');
+  handleInfoPress= ()=> {
+    console.log('Info button pressed');
   };
 
 
@@ -144,7 +144,7 @@ class Home extends Component {
         <Header
           cityName= {this.state.weatherDtata.cityName}
           onMenuButtPress= {this.handleMenuPress}
-          onRefreshButtPress= {this.handleRefreshPress}
+          onInfoButtPress= {this.handleInfoPress}
         />
         <CurrentWeather
           weatherCond= {this.state.weatherDtata.currentWeather.weatherCond}
