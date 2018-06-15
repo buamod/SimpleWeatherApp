@@ -27,7 +27,8 @@ class DeveloperInfo extends Component {
                 transparent={true}
                 visible={this.props.visible}
                 onRequestClose={() => {
-                        alert('Please close developer info first');
+                    //hide the Modal
+                    this.props.onExitButtonPress;
                 }}
             >
                 <View style={styles.container}>
