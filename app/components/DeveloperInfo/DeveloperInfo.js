@@ -28,7 +28,7 @@ class DeveloperInfo extends Component {
                 visible={this.props.visible}
                 onRequestClose={() => {
                     //hide the Modal
-                    this.props.onExitButtonPress;
+                    this.props.onExitButtonPress();
                 }}
             >
                 <View style={styles.container}>
