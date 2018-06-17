@@ -51,6 +51,7 @@ class HourlyForcast extends Component {
           <StatusBar translucent={false} barStyle='light-content'/>
           <Header
             cityName= {'Unknown'}
+            date = {'Default Date'}
             onMenuButtonPress= {this.handleMenuPress}
             onInfoButtonPress= {this.handleInfoPress}
           />
