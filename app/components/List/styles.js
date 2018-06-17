@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions } from 'react-native';
 
@@ -16,11 +17,11 @@ export default EStyleSheet.create({
   },
   hourText: {
     color: '$white',
-    fontSize: 20,
+    fontSize: 30,
   },
   separator: {
     backgroundColor: '$border',
-    height: '$hairlineWidth',
+    height: StyleSheet.hairlineWidth,
     flex: 1,
     marginHorizontal: horizontalMargin,
   },
