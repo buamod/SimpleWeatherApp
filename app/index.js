@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { StyleSheet } from 'react-native';
-import { Tabs, RootStack } from './config/navigation';
- 
+import { Tab } from './config/navigation';
+
 //Build stylesheet with variable values
 EStyleSheet.build({
   $hairlineWidth: StyleSheet.hairlineWidth,
@@ -15,9 +14,5 @@ EStyleSheet.build({
   //$outline: 1,
 });
 
-//export default () => <Tabs/>;
-export default class App extends Component {
-  render() {
-    return <RootStack />;
-  }
-}
+//export default () => <Home/>;
+export default () => <Tab/>;

@@ -3,73 +3,66 @@ import {
   ScrollView,
   StatusBar,
   Text,
-  RefreshControl,
-  FlatList,
 } from 'react-native';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
-import { ListItem, Separator } from '../components/List';
-import { defaultHourlyForcast } from '../data/data';
+import { DeveloperInfo } from '../components/DeveloperInfo';
 
 class HourlyForcast extends Component {
   componentWillMount(){
     this.state = {
-      refreshing: false,
+      isDevInfoVisible: false,
     }
   };
 
   componentDidMount(){
   };
 
-  _onRefresh=()=> {
-    console.log('Screen refreshed');
-    this.setState({
-      ...this.state,
-      refreshing: true,
-    });
-
-    this.setState({
-      ...this.state,
-      refreshing: false,
-    });
-  }
-
-  handleMenuButtonPress= ()=>{
+  handleMenuPress= ()=> {
     console.log('Menu button pressed');
-    this.props.navigation.navigate('Settings');
-  }
+  };
+
+  handleInfoPress= ()=> {
+    console.log('Info button pressed');
+    this.showDevInfo();
+  };
+
+  _setDevInfoVisibility= (visible)=>{
+    this.setState({
+      ...this.state,
+      isDevInfoVisible: visible,
+    });
+  };
+
+  showDevInfo= ()=>{
+    console.log('Will show developer info');
+    this._setDevInfoVisibility(true);
+  };
+
+  handleExitDevInfo= ()=>{
+    console.log('Will hide developer info');
+    this._setDevInfoVisibility(false);
+  };
 
   render() {
     return(
+      <ScrollView>
         <Container>
           <StatusBar translucent={false} barStyle='light-content'/>
           <Header
-              cityName= {'Unknown'}
-              date = {'Default Date'}
-              onMenuButtonPress= {this.handleMenuButtonPress}
+            cityName= {'Unknown'}
+            onMenuButtonPress= {this.handleMenuPress}
+            onInfoButtonPress= {this.handleInfoPress}
           />
-          <ScrollView
-            refreshControl= {
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh.bind(this)}
-              />
-            }
-          >
-            <FlatList
-              data={defaultHourlyForcast}
-              renderItem={({ item }) => (
-                <ListItem
-                  hour={item.hour}
-                  weatherCond={item.weatherCond}
-                  temp={item.temp}
-                />
-              )}
-              keyExtractor={item => item.hour}
-              ItemSeparatorComponent={Separator}
-            />
-          </ScrollView>
+          <DeveloperInfo
+            visible= {this.state.isDevInfoVisible}
+            onExitButtonPress= {this.handleExitDevInfo}
+          />
+          <Text>
+            Hourly Forcast
+          </Text>
         </Container>
+      </ScrollView>
     );
   }
 }
