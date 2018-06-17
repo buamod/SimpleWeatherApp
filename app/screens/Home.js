@@ -121,36 +121,36 @@ class Home extends Component {
 
   render() {
     return(
-      <ScrollView
-        refreshControl= {
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
-        }
-      >
         <Container>
           <StatusBar translucent={false} barStyle='light-content'/>
           <Header
             cityName= {this.state.weatherDtata.cityName}
             date= {'Default Date'}
           />
-          <CurrentWeather
-            weatherCond= {this.state.weatherDtata.currentWeather.weatherCond}
-            temp= {this.state.weatherDtata.currentWeather.temp}
-            minTemp= {this.state.weatherDtata.currentWeather.minTemp}
-            maxTemp= {this.state.weatherDtata.currentWeather.maxTemp}
-            humidity= {this.state.weatherDtata.currentWeather.humidity}
-            windSpeed= {this.state.weatherDtata.currentWeather.windSpeed}
-            lastUpdatedTime= {this.state.weatherDtata.lastUpdatedTime}
-          />
-          <Forcast
-            tomorrow= {this.state.weatherDtata.forcastSummaries[0]}
-            afterTomorrow= {this.state.weatherDtata.forcastSummaries[1]}
-            afterAfterTomorrow= {this.state.weatherDtata.forcastSummaries[2]}
-          />
+          <ScrollView
+            refreshControl= {
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh.bind(this)}
+              />
+            }
+          >
+            <CurrentWeather
+              weatherCond= {this.state.weatherDtata.currentWeather.weatherCond}
+              temp= {this.state.weatherDtata.currentWeather.temp}
+              minTemp= {this.state.weatherDtata.currentWeather.minTemp}
+              maxTemp= {this.state.weatherDtata.currentWeather.maxTemp}
+              humidity= {this.state.weatherDtata.currentWeather.humidity}
+              windSpeed= {this.state.weatherDtata.currentWeather.windSpeed}
+              lastUpdatedTime= {this.state.weatherDtata.lastUpdatedTime}
+            />
+            <Forcast
+              tomorrow= {this.state.weatherDtata.forcastSummaries[0]}
+              afterTomorrow= {this.state.weatherDtata.forcastSummaries[1]}
+              afterAfterTomorrow= {this.state.weatherDtata.forcastSummaries[2]}
+            />
+          </ScrollView>
         </Container>
-      </ScrollView>
     );
   }
 }
