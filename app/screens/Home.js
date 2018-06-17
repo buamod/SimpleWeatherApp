@@ -161,6 +161,7 @@ class Home extends Component {
           <StatusBar translucent={false} barStyle='light-content'/>
           <Header
             cityName= {this.state.weatherDtata.cityName}
+            date= {'Default Date'}
             onMenuButtonPress= {this.handleMenuPress}
             onInfoButtonPress= {this.handleInfoPress}
           />
