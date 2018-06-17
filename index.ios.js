@@ -1,6 +1,7 @@
+import { AppRegistry } from 'react-native';
 import App from './app/index';
 
-export default App;
+AppRegistry.registerComponent('SimpleWeatherApp', () => App);
 
 /* 
 The following commented code should be removed once IOS version is
