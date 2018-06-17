@@ -8,7 +8,6 @@ import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { CurrentWeather } from '../components/CurrentWeather';
 import { Forcast } from '../components/Forcast';
-import { DeveloperInfo } from '../components/DeveloperInfo';
 
 import {fetchWeather} from '../weatherAPI'
 
@@ -82,7 +81,6 @@ class Home extends Component {
   componentWillMount(){
     this.state = {
       refreshing: false,
-      isDevInfoVisible: false,
       weatherDtata: initialWeatherData,
     }
   };
@@ -121,32 +119,6 @@ class Home extends Component {
     }
   }
 
-  handleMenuPress= ()=> {
-    console.log('Menu button pressed');
-  };
-
-  handleInfoPress= ()=> {
-    console.log('Info button pressed');
-    this.showDevInfo();
-  };
-
-  _setDevInfoVisibility= (visible)=>{
-    this.setState({
-      ...this.state,
-      isDevInfoVisible: visible,
-    });
-  };
-
-  showDevInfo= ()=>{
-    console.log('Will show developer info');
-    this._setDevInfoVisibility(true);
-  };
-
-  handleExitDevInfo= ()=>{
-    console.log('Will hide developer info');
-    this._setDevInfoVisibility(false);
-  };
-
   render() {
     return(
       <ScrollView
@@ -162,12 +134,6 @@ class Home extends Component {
           <Header
             cityName= {this.state.weatherDtata.cityName}
             date= {'Default Date'}
-            onMenuButtonPress= {this.handleMenuPress}
-            onInfoButtonPress= {this.handleInfoPress}
-          />
-          <DeveloperInfo
-            visible= {this.state.isDevInfoVisible}
-            onExitButtonPress= {this.handleExitDevInfo}
           />
           <CurrentWeather
             weatherCond= {this.state.weatherDtata.currentWeather.weatherCond}
