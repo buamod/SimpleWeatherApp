@@ -1,12 +1,14 @@
 import EstyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions } from 'react-native';
 
-const modalTopMargin= Dimensions.get('window').height/4;
+const verticalMargin= Dimensions.get('window').height/8;
+const horizontalMargin= Dimensions.get('window').width/8;
 
 const styles= EstyleSheet.create({
   container:{
-    flex: 0.6,
-    marginTop: modalTopMargin,
+    flex: 1,
+    marginVertical: verticalMargin,
+    marginHorizontal: horizontalMargin,
     paddingVertical:10,
     backgroundColor: '$white',
     borderRadius:10,
