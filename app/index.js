@@ -1,8 +1,6 @@
 import React from 'react';
-import {AppRegistry} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
-
-import Home from './screens/Home';
+import { Tab } from './config/navigation';
 
 //Build stylesheet with variable values
 EStyleSheet.build({
@@ -15,5 +13,5 @@ EStyleSheet.build({
   //$outline: 1,
 });
 
-export default () => <Home/>;
-AppRegistry.registerComponent('SimpleWeatherApp', () => Home);
+//export default () => <Home/>;
+export default () => <Tab/>;
