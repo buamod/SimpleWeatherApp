@@ -6,9 +6,6 @@ import styles from './styles';
 class DeveloperInfo extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            modalVisible: true,
-        };
     }
 
     componentDidMount() {
@@ -17,9 +14,6 @@ class DeveloperInfo extends Component {
     componentWillUnmount() {
     }
 
-    onExitButtPress= () => {
-        this.setModalVisible(!this.state.modalVisible);
-    }
     render(){
         return (
             <Modal
