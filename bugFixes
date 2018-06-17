@@ -1,0 +1,15 @@
+#bugs
+#1- fix fot he hoek 
+npm install -g react-native-git-upgrade
+react-native-git-upgrade
+npm i hoek
+
+or 
+
+npm uninstall hoek
+npm update
+npm install
+
+or
+
+npm audit
