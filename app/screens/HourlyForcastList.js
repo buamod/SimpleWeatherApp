@@ -7,9 +7,8 @@ import {
 } from 'react-native';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
-import { DeveloperInfo } from '../components/DeveloperInfo';
 
-class HourlyForcast extends Component {
+class HourlyForcastList extends Component {
   componentWillMount(){
     this.state = {
       refreshing: false,
@@ -57,4 +56,4 @@ class HourlyForcast extends Component {
   }
 }
 
-export default HourlyForcast;
+export default HourlyForcastList;
