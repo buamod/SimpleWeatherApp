@@ -14,7 +14,7 @@ const styles= EstyleSheet.create({
   },
   icon:{
     fontSize: 40,
-    color: 'white',
+    color: '$white',
     justifyContent: 'center',
     paddingLeft: 5,
   },
