@@ -4,11 +4,14 @@ import {
   StatusBar,
   Text,
   RefreshControl,
+  FlatList,
 } from 'react-native';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
+import { ListItem, Separator } from '../components/List';
+import defaultHourlyForcast from '../data/weatherData';
 
-class HourlyForcastList extends Component {
+class HourlyForcast extends Component {
   componentWillMount(){
     this.state = {
       refreshing: false,
@@ -47,13 +50,22 @@ class HourlyForcastList extends Component {
               />
             }
           >
-            <Text>
-              Hourly Forcast
-            </Text>
+            <FlatList
+              data={defaultHourlyForcast}
+              renderItem={({ item }) => (
+                <ListItem
+                  hour={item.hour}
+                  weatherCond={item.weatherCond}
+                  temp={item.temp}
+                />
+              )}
+              keyExtractor={item => item.hour}
+              ItemSeparatorComponent={Separator}
+            />
           </ScrollView>
         </Container>
     );
   }
 }
 
-export default HourlyForcastList;
+export default HourlyForcast;

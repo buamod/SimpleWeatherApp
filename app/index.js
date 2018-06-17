@@ -6,6 +6,8 @@ import { Tab } from './config/navigation';
 EStyleSheet.build({
   $white: '#FFFFFF',
   $primaryBlue: '#2d5dc4',
+  $border: '#E2E2E2',
+
   $silver:'#C0C0C0',
   $darkGrey: '#3a303a',
   $darkText: '#343434',
