@@ -8,38 +8,16 @@ class Settings extends Component {
     title: 'Settings',
   };
 
-  list = [
-    {
-      title: 'Location',
-      icon: 'place',
-    },
-  ];
-
-  handleLocationPress = ()=>{
-    const { navigation } = this.props;
-    const settingsData = navigation.getParam('settingsData', null);
-    if (settingsData != null){
-      locationSettingsData = settingsData.location;
-      this.props.navigation.navigate('LocationSettings', {...locationSettingsData});
-    }else{
-      this.props.navigation.navigate('LocationSettings');
-    }
-  }
-
   render() {
     return (
       <ScrollView>
         <List>
-          {
-            this.list.map((item, i) => (
-              <ListItem
-                key={i}
-                title={item.title}
-                leftIcon={{name: item.icon}}
-                onPress= {this.handleLocationPress}
-              />
-            ))
-          }
+          <ListItem
+            title="Location"
+            rightIcon={
+              <Icon name={'md-locate'} style={{fontSize: 20, color: 'blue'}}/>
+            }
+          />
         </List>
       </ScrollView>
     );
