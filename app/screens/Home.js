@@ -119,6 +119,11 @@ class Home extends Component {
     }
   }
 
+  handleMenuButtonPress= ()=>{
+    console.log('Menu button pressed');
+    this.props.navigation.navigate('Settings');
+  }
+
   render() {
     return(
         <Container>
@@ -126,6 +131,7 @@ class Home extends Component {
           <Header
             cityName= {this.state.weatherDtata.cityName}
             date= {'Default Date'}
+            onMenuButtonPress= {this.handleMenuButtonPress}
           />
           <ScrollView
             refreshControl= {
