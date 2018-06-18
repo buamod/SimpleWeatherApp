@@ -10,6 +10,7 @@ class Header extends Component{
   static propTypes = {
     cityName: PropTypes.string,
     date: PropTypes.string,
+    onMenuButtonPress: PropTypes.func,
   };
 
   constructor(props) {
@@ -25,10 +26,6 @@ class Header extends Component{
 
   componentWillUnmount() {
   }
-
-  handleMenuButtonPress= ()=> {
-    console.log('Menu button pressed');
-  };
 
   handleInfoButtonPress= ()=> {
     console.log('Info button pressed');
@@ -53,7 +50,7 @@ class Header extends Component{
   render(){
     return(
       <View style= {styles.container}>
-        <TouchableOpacity style= {styles.leftButton} onPress= {this.handleMenuButtonPress}>
+        <TouchableOpacity style= {styles.leftButton} onPress= {this.props.onMenuButtonPress}>
           <Icon name={'md-menu'}  style= {styles.icon}> </Icon>
         </TouchableOpacity>
         <View style= {styles.headline}>
