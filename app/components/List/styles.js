@@ -17,7 +17,7 @@ export default EStyleSheet.create({
   },
   hourText: {
     color: '$white',
-    fontSize: 30,
+    fontSize: 20,
   },
   separator: {
     backgroundColor: '$border',
