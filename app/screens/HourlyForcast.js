@@ -34,6 +34,11 @@ class HourlyForcast extends Component {
     });
   }
 
+  handleMenuButtonPress= ()=>{
+    console.log('Menu button pressed');
+    this.props.navigation.navigate('Settings');
+  }
+
   render() {
     return(
         <Container>
@@ -41,6 +46,7 @@ class HourlyForcast extends Component {
           <Header
               cityName= {'Unknown'}
               date = {'Default Date'}
+              onMenuButtonPress= {this.handleMenuButtonPress}
           />
           <ScrollView
             refreshControl= {
