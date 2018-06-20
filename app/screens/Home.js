@@ -8,7 +8,11 @@ import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { CurrentWeather } from '../components/CurrentWeather';
 import { Forcast } from '../components/Forcast';
-import { defaultWeatherData, initialWeatherData } from '../data/weatherData';
+import { 
+  defaultWeatherData, 
+  initialWeatherData, 
+  defaultSettingsData,
+} from '../data/data';
 
 import {fetchWeather} from '../weatherAPI'
 
@@ -56,7 +60,8 @@ class Home extends Component {
 
   handleMenuButtonPress= ()=>{
     console.log('Menu button pressed');
-    this.props.navigation.navigate('Settings');
+    const settingsData = defaultSettingsData;
+    this.props.navigation.navigate('Settings', {settingsData});
   }
 
   render() {

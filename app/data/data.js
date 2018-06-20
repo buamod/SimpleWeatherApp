@@ -1,4 +1,3 @@
-
 export const defaultWeatherData = {
     cityName: 'Ottawa',
     lastUpdatedTime: 'date + time',
@@ -102,3 +101,12 @@ export const defaultHourlyForcast= [
         temp: '',
     }
 ]
+
+export const defaultSettingsData= {
+    location: {
+        type: 'GPS', //enum GPS | CITY_NAME
+        latitude: 45.425533,
+        longitude: -75.692482,
+        cityName: 'City Name',
+    },
+}
