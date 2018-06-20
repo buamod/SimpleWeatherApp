@@ -4,47 +4,16 @@ import { List, ListItem } from 'react-native-elements';
 import EstyleSheet from 'react-native-extended-stylesheet';
 
 class LocationSettings extends Component {
-
     static navigationOptions = {
         title: 'Location Settings',
     };
 
-    componentWillMount(){
-        const { navigation } = this.props;
-        const locationType = navigation.getParam('type', 'UNKNOWN');
-        switch (locationType){
-            case 'GPS':
-                this.setState({
-                    isGpsUsed: true,
-                    cityName: '',
-                });
-                break;
-            case 'CITY_NAME':
-            case 'UNKNOWN':
-            default:
-                this.setState({
-                    isGpsUsed: false,
-                    cityName: navigation.getParam('cityName', 'UNKNOWN'),
-                });
-                break;
-        }
-    };
-
-    componentDidMount(){
+    handleUseGpsPress = ()=>{
+        console.log('Will use GPS to determine location');
     }
 
-    handleUseGpsSwitch = (isSwitchedOn)=>{
-        console.log('GPS swithch is swithced '+ isSwitchedOn);
-        this.setState({
-            ...this.state,
-            isGpsUsed: isSwitchedOn,
-        });
-        //go to the first screen on stack
-        //this.props.navigation.popToTop();
-    }
-
-    handleTextInputChangeText = (text)=>{
-        console.log('Entered city name: '+ text);
+    handleEnterCityName = ()=>{
+        console.log('Will prompt the user to enter city name');
     }
 
     render() {
@@ -52,20 +21,14 @@ class LocationSettings extends Component {
             {
                 title: 'Use GPS',
                 icon: 'my-location',
-                switchButton: true,
-                hideChevron: true,
-                onSwitch: this.handleUseGpsSwitch,
-                switched: this.state.isGpsUsed,
+                onPress: this.handleUseGpsPress,
                 textInput: false,
             },
             {
                 title: 'Enter City Name',
                 icon: 'location-city',
-                hideChevron: true,
+                onPress: this.handleEnterCityName,
                 textInput: true,
-                textInputPlaceholder: this.state.cityName,
-                textInputEditable: !this.state.isGpsUsed,
-                textInputOnChangeText: this.handleTextInputChangeText,
                 textInputStyle: styles.input,
             },
         ];
@@ -75,19 +38,13 @@ class LocationSettings extends Component {
                 {
                     list.map((item, i) => (
                         <ListItem
-                            key= {i}
-                            title= {item.title}
-                            leftIcon= {{name: item.icon}}
-                            onPress= {item.onPress}
-                            switchButton= {item.switchButton}
-                            hideChevron= {item.hideChevron}
-                            onSwitch= {item.onSwitch}
-                            switched= {item.switched}
+                            key={i}
+                            title={item.title}
+                            leftIcon={{name: item.icon}}
+                            onPress={item.onPress}
                             textInput={item.textInput}
-                            textInputPlaceholder= {item.textInputPlaceholder}
-                            textInputEditable= {item.textInputEditable}
-                            textInputOnChangeText= {item.textInputOnChangeText}
                             textInputStyle= {item.textInputStyle}
+                            textInputValue= {item.textInputValue}
                         />
                     ))
                 }
