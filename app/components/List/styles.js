@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions } from 'react-native';
 
@@ -21,7 +20,7 @@ export default EStyleSheet.create({
   },
   separator: {
     backgroundColor: '$border',
-    height: StyleSheet.hairlineWidth,
+    height: '$hairlineWidth',
     flex: 1,
     marginHorizontal: horizontalMargin,
   },
