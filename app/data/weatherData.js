@@ -1,4 +1,71 @@
-export default defaultHourlyForcast= [
+
+export const defaultWeatherData = {
+    cityName: 'Ottawa',
+    lastUpdatedTime: 'date + time',
+    currentWeather: {
+        weatherCond: 'Default',
+        temp: '20',
+        minTemp: '20',
+        maxTemp: '20',
+        humidity: '20',
+        windSpeed: '20',
+    },
+        forcastSummaries:[
+        {
+            day: 'Sat',
+            weatherCond: 'Rain',
+            minTemp: '20',
+            maxTemp: '20', 
+        },
+        {
+            day: 'Sun',
+            weatherCond: 'Rain',
+            minTemp: '20',
+            maxTemp: '20', 
+        },
+        {
+            day: 'Mon',
+            weatherCond: 'Rain',
+            minTemp: '20',
+            maxTemp: '20', 
+        },
+    ]
+}
+  
+export const initialWeatherData = {
+    cityName: '----',
+    lastUpdatedTime: '---- + ----',
+    currentWeather: {
+        weatherCond: 'Default',
+        temp: '--',
+        minTemp: '--',
+        maxTemp: '--',
+        humidity: '--',
+        windSpeed: '--',
+    },
+        forcastSummaries:[
+        {
+            day: '---',
+            weatherCond: 'Default',
+            minTemp: '--',
+            maxTemp: '--', 
+        },
+        {
+            day: '---',
+            weatherCond: 'Default',
+            minTemp: '--',
+            maxTemp: '--', 
+        },
+        {
+            day: '---',
+            weatherCond: 'Default',
+            minTemp: '--',
+            maxTemp: '--', 
+        },
+    ]
+}
+  
+export const defaultHourlyForcast= [
     {
         hour: '10 AM',
         weatherCond: 'Default',
