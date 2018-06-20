@@ -10,6 +10,9 @@ class LocationSettings extends Component {
 
     handleUseGpsPress = ()=>{
         console.log('Will use GPS to determine location');
+
+        //go to the first screen on stack
+        this.props.navigation.popToTop();
     }
 
     handleTextInputChangeText = (text)=>{
