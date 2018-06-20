@@ -12,8 +12,8 @@ class LocationSettings extends Component {
         console.log('Will use GPS to determine location');
     }
 
-    handleEnterCityName = ()=>{
-        console.log('Will prompt the user to enter city name');
+    handleTextInputChangeText = (text)=>{
+        console.log('Entered city name: '+ text);
     }
 
     render() {
@@ -27,8 +27,9 @@ class LocationSettings extends Component {
             {
                 title: 'Enter City Name',
                 icon: 'location-city',
-                onPress: this.handleEnterCityName,
                 textInput: true,
+                textInputPlaceholder: 'City Name',
+                textInputOnChangeText: this.handleTextInputChangeText,
                 textInputStyle: styles.input,
             },
         ];
@@ -43,8 +44,9 @@ class LocationSettings extends Component {
                             leftIcon={{name: item.icon}}
                             onPress={item.onPress}
                             textInput={item.textInput}
+                            textInputPlaceholder= {item.textInputPlaceholder}
+                            textInputOnChangeText= {item.textInputOnChangeText}
                             textInputStyle= {item.textInputStyle}
-                            textInputValue= {item.textInputValue}
                         />
                     ))
                 }
