@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from '../screens/Home';
 import HourlyForcast from '../screens/HourlyForcast';
 import Settings from '../screens/Settings';
+import LocationSettings from '../screens/LocationSettings';
 
 export const Tabs = createBottomTabNavigator (
     {
@@ -37,9 +38,12 @@ export const Tabs = createBottomTabNavigator (
 
 export const SettingsStack = createStackNavigator(
     {
-        Settings: {
+        SettingsRoot: {
             screen: Settings,
         },
+        LocationSettings: {
+            screen: LocationSettings,
+        }
     },
     {
 
