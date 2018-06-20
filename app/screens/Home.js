@@ -8,74 +8,9 @@ import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { CurrentWeather } from '../components/CurrentWeather';
 import { Forcast } from '../components/Forcast';
+import { defaultWeatherData, initialWeatherData } from '../data/weatherData';
 
 import {fetchWeather} from '../weatherAPI'
-
-const defaultWeatherData = {
-  cityName: 'Ottawa',
-  lastUpdatedTime: 'date + time',
-  currentWeather: {
-    weatherCond: 'Default',
-    temp: '20',
-    minTemp: '20',
-    maxTemp: '20',
-    humidity: '20',
-    windSpeed: '20',
-  },
-  forcastSummaries:[
-    {
-      day: 'Sat',
-      weatherCond: 'Rain',
-      minTemp: '20',
-      maxTemp: '20', 
-    },
-    {
-      day: 'Sun',
-      weatherCond: 'Rain',
-      minTemp: '20',
-      maxTemp: '20', 
-    },
-    {
-      day: 'Mon',
-      weatherCond: 'Rain',
-      minTemp: '20',
-      maxTemp: '20', 
-    },
-  ]
-}
-
-const initialWeatherData = {
-  cityName: '----',
-  lastUpdatedTime: '---- + ----',
-  currentWeather: {
-    weatherCond: 'Default',
-    temp: '--',
-    minTemp: '--',
-    maxTemp: '--',
-    humidity: '--',
-    windSpeed: '--',
-  },
-  forcastSummaries:[
-    {
-      day: '---',
-      weatherCond: 'Default',
-      minTemp: '--',
-      maxTemp: '--', 
-    },
-    {
-      day: '---',
-      weatherCond: 'Default',
-      minTemp: '--',
-      maxTemp: '--', 
-    },
-    {
-      day: '---',
-      weatherCond: 'Default',
-      minTemp: '--',
-      maxTemp: '--', 
-    },
-  ]
-}
 
 class Home extends Component {
   componentWillMount(){

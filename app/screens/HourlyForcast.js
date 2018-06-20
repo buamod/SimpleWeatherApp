@@ -9,7 +9,7 @@ import {
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { ListItem, Separator } from '../components/List';
-import defaultHourlyForcast from '../data/weatherData';
+import  {defaultHourlyForcast } from '../data/weatherData';
 
 class HourlyForcast extends Component {
   componentWillMount(){
