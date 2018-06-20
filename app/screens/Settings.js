@@ -16,8 +16,16 @@ class Settings extends Component {
   ];
 
   handleLocationPress = ()=>{
-    this.props.navigation.navigate('LocationSettings')
+    const { navigation } = this.props;
+    const settingsData = navigation.getParam('settingsData', null);
+    if (settingsData != null){
+      locationSettingsData = settingsData.location;
+      this.props.navigation.navigate('LocationSettings', {...locationSettingsData});
+    }else{
+      this.props.navigation.navigate('LocationSettings');
+    }
   }
+
   render() {
     return (
       <ScrollView>
