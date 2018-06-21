@@ -1,7 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import {Modal, Text, TouchableOpacity, View, Image } from 'react-native';
+import { Modal, Text, TouchableOpacity, View, Image, Linking } from 'react-native';
 
 import styles from './styles';
+
+const catchOpenURLError= ()=>{
+    alert('An error occured');
+}
 
 class DeveloperInfo extends Component {
     constructor(props) {
@@ -12,6 +16,10 @@ class DeveloperInfo extends Component {
     }
     
     componentWillUnmount() {
+    }
+
+    handleNamePress= ()=>{
+        Linking.openURL('habcdttps://www.linkedin.com/in/alibawazir/').catch(catchOpenURLError);
     }
 
     render(){
@@ -30,9 +38,14 @@ class DeveloperInfo extends Component {
                         <Text style= {styles.bodyText}>
                             This app is developed by
                         </Text>
-                        <Text style= {styles.bodyTextBold}>
-                            Ali Ba Wazir
-                        </Text>
+                        <TouchableOpacity
+                            onPress= {this.handleNamePress}
+                            style= {styles.button}
+                        >
+                            <Text style= {styles.bodyTextBold}>
+                                Ali Ba Wazir
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                     <Image
                         source= {require('./images/alibawazir.jpg')}
