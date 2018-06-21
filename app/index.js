@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { StyleSheet } from 'react-native';
-import { Tabs, RootStack } from './config/navigation';
+import { RootStack } from './config/navigation';
+import { AlertProvider } from './components/Alert';
  
 //Build stylesheet with variable values
 EStyleSheet.build({
@@ -21,6 +22,10 @@ EStyleSheet.build({
 //export default () => <Tabs/>;
 export default class App extends Component {
   render() {
-    return <RootStack />;
+    return(
+      <AlertProvider>
+        <RootStack/> 
+      </AlertProvider>
+    );
   }
 }

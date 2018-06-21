@@ -1,13 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Text, TouchableOpacity, View, Image, Linking } from 'react-native';
-
+import { connectAlert } from '../Alert';
 import styles from './styles';
 
-const catchOpenURLError= ()=>{
-    alert('An error occured');
-}
-
 class DeveloperInfo extends Component {
+    static propTypes= {
+        visible: PropTypes.bool,
+        onExitButtonPress: PropTypes.func,
+        alertWithType: PropTypes.func,
+    };
+
     constructor(props) {
         super(props);
     }
@@ -17,9 +20,12 @@ class DeveloperInfo extends Component {
     
     componentWillUnmount() {
     }
-
+    
     handleNamePress= ()=>{
-        Linking.openURL('habcdttps://www.linkedin.com/in/alibawazir/').catch(catchOpenURLError);
+        url= 'habcdttps://www.linkedin.com/in/alibawazir/';
+        Linking.openURL(url).catch(()=>{
+            this.props.alertWithType('error', 'Sorry!', 'The following link cannot be opened right now\n'+ url);
+        });
     }
 
     render(){
@@ -66,9 +72,4 @@ class DeveloperInfo extends Component {
     }
 }
 
-DeveloperInfo.PropTypes= {
-    visible: PropTypes.bool,
-    onExitButtonPress: PropTypes.func,
-};
-
-export default DeveloperInfo;
+export default connectAlert(DeveloperInfo);
