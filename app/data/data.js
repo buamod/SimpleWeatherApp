@@ -1,4 +1,4 @@
-export const defaultState= {
+export const simData= {
     settings:{
         location: {
             typeSelected: 'GPS', //<STRING> 'GPS' | 'CITY_NAME'
