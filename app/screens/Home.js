@@ -8,8 +8,9 @@ import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { CurrentWeather } from '../components/CurrentWeather';
 import { Forcast } from '../components/Forcast';
+import { updateCurrentWeather } from '../actions/weather';
 import { 
-  defaultWeatherData, 
+  simData, 
   initialWeatherData, 
   defaultSettingsData,
 } from '../data/data';
@@ -20,7 +21,6 @@ class Home extends Component {
   componentWillMount(){
     this.state = {
       refreshing: false,
-      weatherDtata: initialWeatherData,
     }
   };
 
@@ -28,11 +28,11 @@ class Home extends Component {
     this._onRefresh();
   };
 
-  getWeatherData(){
+  getCurrentWeather(){
     /*Should return null in failure case */
 
-    //for now, return default weather data object
-    return defaultWeatherData;
+    //for now, return simulation weather data object
+    return simData.weather.currentWeather;
     /*TODO: Fetch weather data from API*/
   };
 
@@ -42,15 +42,16 @@ class Home extends Component {
       ...this.state,
       refreshing: true,
     });
-    newWeatherDtata= this.getWeatherData()
+    newWeatherDtata= this.getCurrentWeather()
     if (newWeatherDtata != null){
+      // TODO: Dispatch this action to redux
+      console.log(updateCurrentWeather(newWeatherDtata));
       this.setState({
         ...this.state,
         refreshing: false,
-        weatherDtata: newWeatherDtata,
       });
     } else{
-      /*TODO: log an alert */
+      /*TODO: log an alert using AlertProvider*/
       this.setState({
         ...this.state,
         refreshing: false,
@@ -69,8 +70,8 @@ class Home extends Component {
         <Container>
           <StatusBar translucent={false} barStyle='light-content'/>
           <Header
-            cityName= {this.state.weatherDtata.cityName}
-            date= {'Default Date'}
+            cityName= {'TMP'}
+            date= {'TMP'}
             onMenuButtonPress= {this.handleMenuButtonPress}
           />
           <ScrollView
@@ -82,24 +83,22 @@ class Home extends Component {
             }
           >
             <CurrentWeather
-              weatherCond= {this.state.weatherDtata.currentWeather.weatherCond}
-              temp= {this.state.weatherDtata.currentWeather.temp}
-              minTemp= {this.state.weatherDtata.currentWeather.minTemp}
-              maxTemp= {this.state.weatherDtata.currentWeather.maxTemp}
-              humidity= {this.state.weatherDtata.currentWeather.humidity}
-              windSpeed= {this.state.weatherDtata.currentWeather.windSpeed}
-              lastUpdatedTime= {this.state.weatherDtata.lastUpdatedTime}
-            />
-            <Forcast
-              tomorrow= {this.state.weatherDtata.forcastSummaries[0]}
-              afterTomorrow= {this.state.weatherDtata.forcastSummaries[1]}
-              afterAfterTomorrow= {this.state.weatherDtata.forcastSummaries[2]}
+              weatherCond= {'TMP'}
+              temp= {'TMP'}
+              minTemp= {'TMP'}
+              maxTemp= {'TMP'}
+              humidity= {'TMP'}
+              windSpeed= {'TMP'}
+              lastUpdatedTime= {'TMP'}
             />
           </ScrollView>
         </Container>
     );
   }
 }
+
+/*TODO: add back 3 days forcast summary components to render function */
+
 
 /*
 function toCelsius(k) {
