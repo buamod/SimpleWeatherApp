@@ -10,7 +10,7 @@ export const simData= {
         },
     },
     weather: {
-        isFetching: false,
+        //isFetching: false,
         currentWeather: {
             "coord": {
                 "lon": -75.69,

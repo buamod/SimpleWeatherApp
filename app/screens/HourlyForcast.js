@@ -9,7 +9,9 @@ import {
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { ListItem, Separator } from '../components/List';
-import { defaultHourlyForcast } from '../data/data';
+import { simData, defaultHourlyForcast, defaultSettingsData } from '../data/data';
+
+import { updateForcast } from '../actions/weather';
 
 class HourlyForcast extends Component {
   componentWillMount(){
@@ -21,22 +23,42 @@ class HourlyForcast extends Component {
   componentDidMount(){
   };
 
+
+  getForcast(){
+    /*Should return null in failure case */
+
+    //for now, return simulation forcast data object
+    return simData.weather.forcast;
+    /*TODO: Fetch weather data from API*/
+  };
+
   _onRefresh=()=> {
     console.log('Screen refreshed');
     this.setState({
       ...this.state,
       refreshing: true,
     });
-
-    this.setState({
-      ...this.state,
-      refreshing: false,
-    });
+    newForcastDtata= this.getForcast()
+    if (newForcastDtata != null){
+      // TODO: Dispatch this action to redux
+      console.log(updateForcast(newForcastDtata));
+      this.setState({
+        ...this.state,
+        refreshing: false,
+      });
+    } else{
+      /*TODO: log an alert using AlertProvider*/
+      this.setState({
+        ...this.state,
+        refreshing: false,
+      });
+    }
   }
 
   handleMenuButtonPress= ()=>{
     console.log('Menu button pressed');
-    this.props.navigation.navigate('Settings');
+    const settingsData = defaultSettingsData;
+    this.props.navigation.navigate('Settings', {settingsData});
   }
 
   render() {
