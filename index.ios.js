@@ -43,10 +43,7 @@ class App extends Component {
   }
 
   getlocation2(){
-    navigator.geolocation.getCurrentPosition(
-      (postData) => console.log(postData)),
-      (error) => alert(error),
-      {timeout:10000}
+    navigator.geolocation.getCurrentPosition((postData) => console.log(postData)), (error) => alert(error), {timeout:10000}
   }
 
 
