@@ -41,13 +41,13 @@ const styles= EStyleSheet.create({
   },
   cityName:{
     fontFamily:'HelveticaNeue-Bold',
-    fontSize:30,
+    fontSize:20,
     color:'$white',
     alignSelf: 'center',
   },
   date:{
     fontFamily:'HelveticaNeue-Bold',
-    fontSize:20,
+    fontSize:16,
     color:'$white',
     alignSelf: 'center',
   },
