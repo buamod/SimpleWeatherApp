@@ -1,7 +1,7 @@
 export const simData= {
     settings:{
         location: {
-            typeSelected: 'GPS', //<STRING> 'GPS' | 'CITY_NAME'
+            isGpsSelected: true,
             cityName: 'City Name',
         },
     },
@@ -1383,7 +1383,7 @@ export const simData= {
 export const defaultState= {
     settings:{
         location: {
-            typeSelected: 'GPS', //<STRING> 'GPS' | 'CITY_NAME'
+            isGpsSelected: true,
             cityName: 'City Name',
         },
     },
