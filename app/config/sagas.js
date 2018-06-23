@@ -12,16 +12,16 @@ import {
     CURRENT_WEATHER_DATA_ERROR,
 } from '../actions/currentWeather';
 import { 
-    UPDATE_FORCAST_DATA,
-    FORCAST_DATA_RESULT, 
-    FORCAST_DATA_ERROR,
-} from '../actions/forcast';
+    UPDATE_FORECAST_DATA,
+    FORECAST_DATA_RESULT, 
+    FORECAST_DATA_ERROR,
+} from '../actions/forecast';
 
 const baseUrl= 'http://api.openweathermap.org/data/2.5/';
 const appId= '6660d2ece82717bbbc5388727bbb2fd6';
 
 const DATA_TYPE_CURRENT_WEATHER= 'DATA_TYPE_CURRENT_WEATHER';
-const DATA_TYPE_FORCAST= 'DATA_TYPE_FORCAST';
+const DATA_TYPE_FORECAST= 'DATA_TYPE_FORECAST';
 
 const fetchByGpsCoordinates = (dataType, lat, lon)=> {
     let fullUrl;
@@ -29,7 +29,7 @@ const fetchByGpsCoordinates = (dataType, lat, lon)=> {
         case DATA_TYPE_CURRENT_WEATHER:
             fullUrl= `${baseUrl}weather?appid=${appId}&lat=${lat.toString()}&lon=${lon.toString()}`;
             break;
-        case DATA_TYPE_FORCAST:
+        case DATA_TYPE_FORECAST:
             fullUrl= `${baseUrl}forecast?appid=${appId}&lat=${lat.toString()}&lon=${lon.toString()}`;
             break;
         default:
@@ -45,7 +45,7 @@ const fetchByCity = (dataType, cityName)=> {
         case DATA_TYPE_CURRENT_WEATHER:
             fullUrl= `${baseUrl}weather?appid=${appId}&q=${cityName}`;
             break;
-        case DATA_TYPE_FORCAST:
+        case DATA_TYPE_FORECAST:
             fullUrl= `${baseUrl}forecast?appid=${appId}&q=${cityName}`;
             break;
         default:
@@ -73,8 +73,8 @@ function* currentPositionOnSuccess(dataType, postData){
                 case DATA_TYPE_CURRENT_WEATHER:
                     yield put({type: CURRENT_WEATHER_DATA_ERROR, error: result.message});
                     break;
-                case DATA_TYPE_FORCAST:
-                    yield put({type: FORCAST_DATA_ERROR, error: result.message});
+                case DATA_TYPE_FORECAST:
+                    yield put({type: FORECAST_DATA_ERROR, error: result.message});
                     break;
                 default:
                     alert ('Invalid dataType: ', dataType);
@@ -87,8 +87,8 @@ function* currentPositionOnSuccess(dataType, postData){
                 case DATA_TYPE_CURRENT_WEATHER:
                     yield put({type: CURRENT_WEATHER_DATA_RESULT, result});
                     break;
-                case DATA_TYPE_FORCAST:
-                    yield put({type: FORCAST_DATA_RESULT, result});
+                case DATA_TYPE_FORECAST:
+                    yield put({type: FORECAST_DATA_RESULT, result});
                     break;
                 default:
                     alert ('Invalid dataType: ', dataType);
@@ -99,8 +99,8 @@ function* currentPositionOnSuccess(dataType, postData){
             case DATA_TYPE_CURRENT_WEATHER:
                 yield put({type: CURRENT_WEATHER_DATA_ERROR, error: e.message});
                 break;
-            case DATA_TYPE_FORCAST:
-                yield put({type: FORCAST_DATA_ERROR, error: e.message});
+            case DATA_TYPE_FORECAST:
+                yield put({type: FORECAST_DATA_ERROR, error: e.message});
                 break;
             default:
                 alert ('Invalid dataType: ', dataType);
@@ -146,17 +146,17 @@ function* updateCurrentWeather(){
     }
 };
 
-function* updateForcast(){
+function* updateForecast(){
     isGpsSelected= yield select(state => state.settings.location.isGpsSelected);
     if (isGpsSelected){
         /* TODO: uncomment this out
         navigator.geolocation.getCurrentPosition(
-            (postData) => yield currentPositionOnSuccess(DATA_TYPE_FORCAST, postData),
+            (postData) => yield currentPositionOnSuccess(DATA_TYPE_FORECAST, postData),
             (error) => alert(error),
             {timeout:10000}
         )
         */
-       yield currentPositionOnSuccess(DATA_TYPE_FORCAST, {
+       yield currentPositionOnSuccess(DATA_TYPE_FORECAST, {
             coords:{
                 latitude: 45.42,
                 longitude: -75.69,
@@ -167,19 +167,19 @@ function* updateForcast(){
             const cityName= yield select(state => state.settings.location.cityName);
             const response= yield call(
                 fetchByCity,
-                DATA_TYPE_FORCAST,
+                DATA_TYPE_FORECAST,
                 cityName,
             );
             const result = yield response.json()
             if (result.cod != 200){
                 //invalid response
-                yield put({type: FORCAST_DATA_ERROR, error: result.message});
+                yield put({type: FORECAST_DATA_ERROR, error: result.message});
             }else{
                 //valid response
-                yield put({type: FORCAST_DATA_RESULT, result})
+                yield put({type: FORECAST_DATA_RESULT, result})
             }
         }catch (e){
-            yield put({type: FORCAST_DATA_ERROR, error: e.message});
+            yield put({type: FORECAST_DATA_ERROR, error: e.message});
         }
     }
 };
@@ -188,5 +188,5 @@ function* updateForcast(){
 export default function* rootSaga(){
     //yield will cause the middleware to pause here
     yield takeEvery(UPDATE_CURRENT_WEATHER_DATA, updateCurrentWeather);
-    yield takeEvery(UPDATE_FORCAST_DATA, updateForcast); 
+    yield takeEvery(UPDATE_FORECAST_DATA, updateForecast); 
 }

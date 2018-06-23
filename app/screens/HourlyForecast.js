@@ -12,11 +12,11 @@ import { connect } from 'react-redux';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { ListItem, Separator } from '../components/List';
-import { simWeatherData, defaultHourlyForcast, defaultSettingsData } from '../data/data';
+import { simWeatherData, defaultHourlyForecast, defaultSettingsData } from '../data/data';
 
-import { updateForcast } from '../actions/forcast';
+import { updateForecast } from '../actions/forecast';
 
-class HourlyForcast extends Component {
+class HourlyForecast extends Component {
   static propTypes= {
     dispatch: PropTypes.func,
     isFetching: PropTypes.bool,
@@ -31,7 +31,7 @@ class HourlyForcast extends Component {
 
   _onRefresh=()=> {
     console.log('Screen refreshed');
-    this.props.dispatch(updateForcast());
+    this.props.dispatch(updateForecast());
   }
 
   handleMenuButtonPress= ()=>{
@@ -58,7 +58,7 @@ class HourlyForcast extends Component {
             }
           >
             <FlatList
-              data={defaultHourlyForcast}
+              data={defaultHourlyForecast}
               renderItem={({ item }) => (
                 <ListItem
                   hour={item.hour}
@@ -77,8 +77,8 @@ class HourlyForcast extends Component {
 
 const mapStateToProps= (state)=>{
   return {
-      isFetching: state.forcast.isFetching,
+      isFetching: state.forecast.isFetching,
   }
 };
 
-export default connect(mapStateToProps)(HourlyForcast);
+export default connect(mapStateToProps)(HourlyForecast);

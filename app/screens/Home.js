@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { CurrentWeather } from '../components/CurrentWeather';
-import { Forcast } from '../components/Forcast';
+//import { Forecast } from '../components/Forecast';
 import { updateCurrentWeather } from '../actions/currentWeather';
 import { 
   simWeatherData, 
@@ -75,7 +75,7 @@ class Home extends Component {
   }
 }
 
-/*TODO: add back 3 days forcast summary components to render function */
+/*TODO: add back 3 days forecast summary components to render function */
 
 const mapStateToProps= (state)=>{
   return {

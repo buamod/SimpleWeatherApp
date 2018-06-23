@@ -1,8 +1,8 @@
 import { 
-    UPDATE_FORCAST_DATA,
-    FORCAST_DATA_RESULT,
-    FORCAST_DATA_ERROR,
-} from '../actions/forcast';
+    UPDATE_FORECAST_DATA,
+    FORECAST_DATA_RESULT,
+    FORECAST_DATA_ERROR,
+} from '../actions/forecast';
 
 import { defaultState } from '../data/data';
 
@@ -1338,12 +1338,12 @@ const initialState = {
   
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_FORCAST_DATA:
+        case UPDATE_FORECAST_DATA:
             return {
                 ...state,
                 isFetching: true,
             };
-        case FORCAST_DATA_RESULT:
+        case FORECAST_DATA_RESULT:
             return { 
                 ...state,
                 isFetching: false,
@@ -1351,7 +1351,7 @@ const reducer = (state = initialState, action) => {
                     ...action.result,
                 },
             };
-        case FORCAST_DATA_ERROR:
+        case FORECAST_DATA_ERROR:
             return { 
                 ...state,
                 isFetching: false,

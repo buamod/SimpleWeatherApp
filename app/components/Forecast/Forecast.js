@@ -4,7 +4,7 @@ import {DayWeatherSummary} from '../DayWeatherSummary';
 
 import styles from './styles';
 
-const Forcast= ({tomorrow, afterTomorrow, afterAfterTomorrow})=> (
+const Forecast= ({tomorrow, afterTomorrow, afterAfterTomorrow})=> (
   <View style= {styles.container}>
     <DayWeatherSummary
         day= {tomorrow['day']}
@@ -27,12 +27,12 @@ const Forcast= ({tomorrow, afterTomorrow, afterAfterTomorrow})=> (
   </View>
 );
 
-Forcast.PropTypes= {
+Forecast.PropTypes= {
     tomorrow: PropTypes.any,
     afterTomorrow: PropTypes.any,
     afterAfterTomorrow: PropTypes.any,
 };
-export default Forcast;
+export default Forecast;
 
 /*
 
@@ -43,15 +43,15 @@ export default Forcast;
         maxTemp= {tomorrow['maxTemp']}
 
     <DayWeatherSummary
-        day= {forcastSummary[1].day}
-        weatherCond= {forcastSummary[1][weatherCond]}
-        minTemp= {forcastSummary[1][minTemp]}
-        maxTemp= {forcastSummary[1][maxTemp]}
+        day= {forecastSummary[1].day}
+        weatherCond= {forecastSummary[1][weatherCond]}
+        minTemp= {forecastSummary[1][minTemp]}
+        maxTemp= {forecastSummary[1][maxTemp]}
     />
     <DayWeatherSummary
-        day= {forcastSummary[2].day}
-        weatherCond= {forcastSummary[2][weatherCond]}
-        minTemp= {forcastSummary[2][minTemp]}
-        maxTemp= {forcastSummary[2][maxTemp]}
+        day= {forecastSummary[2].day}
+        weatherCond= {forecastSummary[2][weatherCond]}
+        minTemp= {forecastSummary[2][minTemp]}
+        maxTemp= {forecastSummary[2][maxTemp]}
     />
 */

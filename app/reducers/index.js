@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import currentWeather from './currentWeather';
-import forcast from './forcast';
+import forecast from './forecast';
 import settings from './settings';
 
 export default combineReducers({
     currentWeather,
-    forcast,
+    forecast,
     settings,
 });
