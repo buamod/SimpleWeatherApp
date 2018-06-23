@@ -24,6 +24,9 @@ class Home extends Component {
   static propTypes= {
     dispatch: PropTypes.func,
     isFetching: PropTypes.bool,
+    cityName: PropTypes.string,
+    timeOfCalculation: PropTypes.string,
+
   };
 
   componentWillMount(){
@@ -48,8 +51,8 @@ class Home extends Component {
         <Container>
           <StatusBar translucent={false} barStyle='light-content'/>
           <Header
-            cityName= {'TMP'}
-            date= {'TMP'}
+            cityName= {this.props.cityName}
+            date= {this.props.timeOfCalculation}
             onMenuButtonPress= {this.handleMenuButtonPress}
           />
           <ScrollView
@@ -78,8 +81,12 @@ class Home extends Component {
 /*TODO: add back 3 days forecast summary components to render function */
 
 const mapStateToProps= (state)=>{
+  const currentWeatherData= state.currentWeather.data;
   return {
       isFetching: state.currentWeather.isFetching,
+      cityName: currentWeatherData.name,
+      timeOfCalculation: new Date((currentWeatherData.dt)*1000).toString().split(" ", 5).join(" "),
+
   }
 };
 
