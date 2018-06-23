@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import EstyleSheet from 'react-native-extended-stylesheet';
+import { connect } from 'react-redux';
 
 import { toggleGps, changeCityName } from '../actions/settings';
 
 class LocationSettings extends Component {
+    static propTypes= {
+        dispatch: PropTypes.func,
+    };
 
     static navigationOptions = {
         title: 'Location Settings',
@@ -19,8 +24,7 @@ class LocationSettings extends Component {
 
     handleGpsSwitch = (isSwitchedOn)=>{
         console.log('GPS swithch is swithced '+ isSwitchedOn);
-        /*TODO: dispatch action*/
-        console.log(toggleGps(isSwitchedOn));
+        this.props.dispatch(toggleGps(isSwitchedOn));
         //go to the first screen on stack
         //this.props.navigation.popToTop();
     }
@@ -28,7 +32,7 @@ class LocationSettings extends Component {
     handleTextInputChangeText = (text)=>{
         console.log('Entered city name: '+ text);
         /*TODO: dispatch action*/
-        console.log(changeCityName(text));
+        this.props.dispatch(changeCityName(text));
     }
 
     render() {
@@ -39,7 +43,7 @@ class LocationSettings extends Component {
                 switchButton: true,
                 hideChevron: true,
                 onSwitch: this.handleGpsSwitch,
-                switched: this.state.isGpsSelected,
+                switched: true, //TODO: read data from store
                 textInput: false,
             },
             {
@@ -47,8 +51,8 @@ class LocationSettings extends Component {
                 icon: 'location-city',
                 hideChevron: true,
                 textInput: true,
-                textInputPlaceholder: this.state.cityName,
-                textInputEditable: !this.state.isGpsSelected,
+                textInputPlaceholder: '----', //TODO: read data from store
+                textInputEditable: false, //TODO: read data from store !this.state.isGpsSelected,
                 textInputOnChangeText: this.handleTextInputChangeText,
                 textInputStyle: styles.input,
             },
@@ -81,7 +85,7 @@ class LocationSettings extends Component {
     }
 }
 
-export default LocationSettings;
+export default connect()(LocationSettings);
 
 /************ Styles *************/
 const INPUT_HEIGHT= 48;

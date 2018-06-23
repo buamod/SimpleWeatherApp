@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
+
 import { RootStack } from './config/navigation';
 import { AlertProvider } from './components/Alert';
- 
+import store from './config/store';
+
 //Build stylesheet with variable values
 EStyleSheet.build({
   $hairlineWidth: StyleSheet.hairlineWidth,
@@ -23,9 +26,11 @@ EStyleSheet.build({
 export default class App extends Component {
   render() {
     return(
-      <AlertProvider>
-        <RootStack/> 
-      </AlertProvider>
+      <Provider store={store}>
+        <AlertProvider>
+          <RootStack/> 
+        </AlertProvider>
+        </Provider>
     );
   }
 }
