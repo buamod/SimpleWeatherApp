@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   ScrollView,
   StatusBar,
@@ -6,53 +7,31 @@ import {
   RefreshControl,
   FlatList,
 } from 'react-native';
+import { connect } from 'react-redux';
+
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { ListItem, Separator } from '../components/List';
 import { simWeatherData, defaultHourlyForcast, defaultSettingsData } from '../data/data';
 
-import { updateForcast } from '../actions/currentWeather';
+import { updateForcast } from '../actions/forcast';
 
 class HourlyForcast extends Component {
+  static propTypes= {
+    dispatch: PropTypes.func,
+    isFetching: PropTypes.bool,
+  };
+
   componentWillMount(){
-    this.state = {
-      refreshing: false,
-    }
+    this._onRefresh();
   };
 
   componentDidMount(){
   };
 
-
-  getForcast(){
-    /*Should return null in failure case */
-
-    //for now, return simulation forcast data object
-    return simWeatherData.forcast;
-    /*TODO: Fetch weather data from API*/
-  };
-
   _onRefresh=()=> {
     console.log('Screen refreshed');
-    this.setState({
-      ...this.state,
-      refreshing: true,
-    });
-    newForcastDtata= this.getForcast()
-    if (newForcastDtata != null){
-      // TODO: Dispatch this action to redux
-      console.log(updateForcast(newForcastDtata));
-      this.setState({
-        ...this.state,
-        refreshing: false,
-      });
-    } else{
-      /*TODO: log an alert using AlertProvider*/
-      this.setState({
-        ...this.state,
-        refreshing: false,
-      });
-    }
+    this.props.dispatch(updateForcast());
   }
 
   handleMenuButtonPress= ()=>{
@@ -73,7 +52,7 @@ class HourlyForcast extends Component {
           <ScrollView
             refreshControl= {
               <RefreshControl
-                refreshing={this.state.refreshing}
+                refreshing={this.props.isFetching}
                 onRefresh={this._onRefresh.bind(this)}
               />
             }
@@ -96,4 +75,10 @@ class HourlyForcast extends Component {
   }
 }
 
-export default HourlyForcast;
+const mapStateToProps= (state)=>{
+  return {
+      isFetching: state.forcast.isFetching,
+  }
+};
+
+export default connect(mapStateToProps)(HourlyForcast);
