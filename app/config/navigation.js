@@ -3,14 +3,14 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Home from '../screens/Home';
-import HourlyForcast from '../screens/HourlyForcast';
+import HourlyForecast from '../screens/HourlyForecast';
 import Settings from '../screens/Settings';
 import LocationSettings from '../screens/LocationSettings';
 
 export const Tabs = createBottomTabNavigator (
     {
         Home: {screen: Home},
-        HourlyForcast: {screen: HourlyForcast},
+        HourlyForecast: {screen: HourlyForecast},
     },
     {
         navigationOptions: ({ navigation }) => ({
@@ -19,7 +19,7 @@ export const Tabs = createBottomTabNavigator (
                 let iconName;
                 if (routeName === 'Home') {
                     iconName = 'md-home';
-                } else if (routeName === 'HourlyForcast') {
+                } else if (routeName === 'HourlyForecast') {
                     iconName = 'md-time';
                 }
                 return <Ionicons name={iconName} size={30} color={tintColor} />;

@@ -41,7 +41,7 @@ export const simWeatherData= {
             "name": "Ottawa",
             "cod": 200
     },
-    forcast:{
+    forecast:{
             "cod": "200",
             "message": 0.0042,
             "cnt": 39,
@@ -1422,7 +1422,7 @@ export const defaultState= {
             "cod": 200
         },
     },
-    forcast:{
+    forecast:{
         isFetching: false,
         data:{
             "cod": "200",
@@ -2765,7 +2765,7 @@ export const defaultWeatherData = {
         humidity: '20',
         windSpeed: '20',
     },
-        forcastSummaries:[
+        forecastSummaries:[
         {
             day: 'Sat',
             weatherCond: 'Rain',
@@ -2798,7 +2798,7 @@ export const initialWeatherData = {
         humidity: '--',
         windSpeed: '--',
     },
-        forcastSummaries:[
+        forecastSummaries:[
         {
             day: '---',
             weatherCond: 'Default',
@@ -2820,7 +2820,7 @@ export const initialWeatherData = {
     ]
 }
   
-export const defaultHourlyForcast= [
+export const defaultHourlyForecast= [
     {
         hour: '10 AM',
         weatherCond: 'Default',
