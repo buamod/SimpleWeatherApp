@@ -9,7 +9,7 @@ import {
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { ListItem, Separator } from '../components/List';
-import { simData, defaultHourlyForcast, defaultSettingsData } from '../data/data';
+import { simWeatherData, defaultHourlyForcast, defaultSettingsData } from '../data/data';
 
 import { updateForcast } from '../actions/currentWeather';
 
@@ -28,7 +28,7 @@ class HourlyForcast extends Component {
     /*Should return null in failure case */
 
     //for now, return simulation forcast data object
-    return simData.weather.forcast;
+    return simWeatherData.forcast;
     /*TODO: Fetch weather data from API*/
   };
 
