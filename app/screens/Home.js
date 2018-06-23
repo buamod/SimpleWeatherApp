@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   ScrollView,
   StatusBar,
   RefreshControl,
 } from 'react-native';
+import { connect } from 'react-redux';
+
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { CurrentWeather } from '../components/CurrentWeather';
@@ -18,45 +21,21 @@ import {
 import {fetchWeather} from '../weatherAPI'
 
 class Home extends Component {
-  componentWillMount(){
-    this.state = {
-      refreshing: false,
-    }
+  static propTypes= {
+    dispatch: PropTypes.func,
+    isFetching: PropTypes.bool,
   };
 
-  componentDidMount(){
+  componentWillMount(){
     this._onRefresh();
   };
 
-  getCurrentWeather(){
-    /*Should return null in failure case */
-
-    //for now, return simulation weather data object
-    return simWeatherData.currentWeather;
-    /*TODO: Fetch weather data from API*/
+  componentDidMount(){
   };
 
   _onRefresh=()=> {
     console.log('Screen refreshed');
-    this.setState({
-      ...this.state,
-      refreshing: true,
-    });
-    newWeatherDtata= this.getCurrentWeather()
-    if (newWeatherDtata != null){
-      // TODO: Dispatch this action to redux
-      console.log(updateCurrentWeather(newWeatherDtata));
-      this.setState({
-        ...this.state,
-        refreshing: false,
-      });
-    } else{
-      /*TODO: log an alert using AlertProvider*/
-      this.setState({
-        ...this.state,
-        refreshing: false,
-      });
-    }
+    this.props.dispatch(updateCurrentWeather());
   }
 
   handleMenuButtonPress= ()=>{
@@ -76,7 +55,7 @@ class Home extends Component {
           <ScrollView
             refreshControl= {
               <RefreshControl
-                refreshing={this.state.refreshing}
+                refreshing={this.props.isFetching}
                 onRefresh={this._onRefresh.bind(this)}
               />
             }
@@ -98,6 +77,13 @@ class Home extends Component {
 
 /*TODO: add back 3 days forcast summary components to render function */
 
+const mapStateToProps= (state)=>{
+  return {
+      isFetching: state.currentWeather.isFetching,
+  }
+};
+
+export default connect(mapStateToProps)(Home);
 
 /*
 function toCelsius(k) {
@@ -308,5 +294,3 @@ const allStyles = StyleSheet.create({
   }
 })
 */
-
-export default Home;
