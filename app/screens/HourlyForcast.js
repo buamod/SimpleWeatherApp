@@ -11,7 +11,7 @@ import { Header } from '../components/Header';
 import { ListItem, Separator } from '../components/List';
 import { simData, defaultHourlyForcast, defaultSettingsData } from '../data/data';
 
-import { updateForcast } from '../actions/weather';
+import { updateForcast } from '../actions/currentWeather';
 
 class HourlyForcast extends Component {
   componentWillMount(){
