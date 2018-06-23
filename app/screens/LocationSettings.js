@@ -43,7 +43,7 @@ class LocationSettings extends Component {
                 switchButton: true,
                 hideChevron: true,
                 onSwitch: this.handleGpsSwitch,
-                switched: true, //TODO: read data from store
+                switched: this.props.isGpsSelected,
                 textInput: false,
             },
             {
@@ -51,8 +51,8 @@ class LocationSettings extends Component {
                 icon: 'location-city',
                 hideChevron: true,
                 textInput: true,
-                textInputPlaceholder: '----', //TODO: read data from store
-                textInputEditable: false, //TODO: read data from store !this.state.isGpsSelected,
+                textInputPlaceholder: this.props.cityName, 
+                textInputEditable: !this.props.isGpsSelected,
                 textInputOnChangeText: this.handleTextInputChangeText,
                 textInputStyle: styles.input,
             },
@@ -85,7 +85,17 @@ class LocationSettings extends Component {
     }
 }
 
-export default connect()(LocationSettings);
+const mapStateToProps= (state)=>{
+    const isGpsSelected = state.settings.location.isGpsSelected;
+    const cityName = state.settings.location.cityName;
+    //anything returned from this function will be accessable by this.props
+    return {
+        isGpsSelected,
+        cityName,
+    }
+};
+
+export default connect(mapStateToProps)(LocationSettings); //the duplicate () means call the function twice 
 
 /************ Styles *************/
 const INPUT_HEIGHT= 48;
