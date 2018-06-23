@@ -1,13 +1,5 @@
-export const simData= {
-    settings:{
-        location: {
-            isGpsSelected: true,
-            cityName: 'City Name',
-        },
-    },
-    weather: {
-        //isFetching: false,
-        currentWeather: {
+export const simWeatherData= {
+    currentWeather: {
             "coord": {
                 "lon": -75.69,
                 "lat": 45.42
@@ -48,8 +40,8 @@ export const simData= {
             "id": 6094817,
             "name": "Ottawa",
             "cod": 200
-        },
-        forcast:{
+    },
+    forcast:{
             "cod": "200",
             "message": 0.0042,
             "cnt": 39,
@@ -1373,9 +1365,7 @@ export const simData= {
                 },
                 "country": "CA"
             }
-        }
-
-    },
+    }
 
 }
 
@@ -1387,9 +1377,9 @@ export const defaultState= {
             cityName: 'City Name',
         },
     },
-    weather: {
-        //isFetching: false,
-        currentWeather: {
+    currentWeather:{
+        isFetching: false,
+        data:{
             "coord": {
                 "lon": -75.69,
                 "lat": 45.42
@@ -1431,7 +1421,10 @@ export const defaultState= {
             "name": "Unknown",
             "cod": 200
         },
-        forcast:{
+    },
+    forcast:{
+        isFetching: false,
+        data:{
             "cod": "200",
             "message": 0.0042,
             "cnt": 39,
@@ -2755,8 +2748,7 @@ export const defaultState= {
                 },
                 "country": "CA"
             }
-        }
-
+        },
     },
 
 }

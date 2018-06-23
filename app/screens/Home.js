@@ -10,7 +10,7 @@ import { CurrentWeather } from '../components/CurrentWeather';
 import { Forcast } from '../components/Forcast';
 import { updateCurrentWeather } from '../actions/currentWeather';
 import { 
-  simData, 
+  simWeatherData, 
   initialWeatherData, 
   defaultSettingsData,
 } from '../data/data';
@@ -32,7 +32,7 @@ class Home extends Component {
     /*Should return null in failure case */
 
     //for now, return simulation weather data object
-    return simData.weather.currentWeather;
+    return simWeatherData.currentWeather;
     /*TODO: Fetch weather data from API*/
   };
 
