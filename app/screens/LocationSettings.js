@@ -10,6 +10,8 @@ import { toggleGps, changeCityName } from '../actions/settings';
 class LocationSettings extends Component {
     static propTypes= {
         dispatch: PropTypes.func,
+        isGpsSelected: PropTypes.bool,
+        cityName: PropTypes.string,
     };
 
     static navigationOptions = {
@@ -86,12 +88,10 @@ class LocationSettings extends Component {
 }
 
 const mapStateToProps= (state)=>{
-    const isGpsSelected = state.settings.location.isGpsSelected;
-    const cityName = state.settings.location.cityName;
     //anything returned from this function will be accessable by this.props
     return {
-        isGpsSelected,
-        cityName,
+        isGpsSelected: state.settings.location.isGpsSelected,
+        cityName: state.settings.location.cityName,
     }
 };
 
