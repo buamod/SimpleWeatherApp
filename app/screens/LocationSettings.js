@@ -3,6 +3,8 @@ import { ScrollView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import EstyleSheet from 'react-native-extended-stylesheet';
 
+import { toggleGps, changeCityName } from '../actions/settings';
+
 class LocationSettings extends Component {
 
     static navigationOptions = {
@@ -10,41 +12,23 @@ class LocationSettings extends Component {
     };
 
     componentWillMount(){
-        const { navigation } = this.props;
-        const locationType = navigation.getParam('type', 'UNKNOWN');
-        switch (locationType){
-            case 'GPS':
-                this.setState({
-                    isGpsUsed: true,
-                    cityName: '',
-                });
-                break;
-            case 'CITY_NAME':
-            case 'UNKNOWN':
-            default:
-                this.setState({
-                    isGpsUsed: false,
-                    cityName: navigation.getParam('cityName', 'UNKNOWN'),
-                });
-                break;
-        }
     };
 
     componentDidMount(){
     }
 
-    handleUseGpsSwitch = (isSwitchedOn)=>{
+    handleGpsSwitch = (isSwitchedOn)=>{
         console.log('GPS swithch is swithced '+ isSwitchedOn);
-        this.setState({
-            ...this.state,
-            isGpsUsed: isSwitchedOn,
-        });
+        /*TODO: dispatch action*/
+        console.log(toggleGps(isSwitchedOn));
         //go to the first screen on stack
         //this.props.navigation.popToTop();
     }
 
     handleTextInputChangeText = (text)=>{
         console.log('Entered city name: '+ text);
+        /*TODO: dispatch action*/
+        console.log(changeCityName(text));
     }
 
     render() {
@@ -54,8 +38,8 @@ class LocationSettings extends Component {
                 icon: 'my-location',
                 switchButton: true,
                 hideChevron: true,
-                onSwitch: this.handleUseGpsSwitch,
-                switched: this.state.isGpsUsed,
+                onSwitch: this.handleGpsSwitch,
+                switched: this.state.isGpsSelected,
                 textInput: false,
             },
             {
@@ -64,7 +48,7 @@ class LocationSettings extends Component {
                 hideChevron: true,
                 textInput: true,
                 textInputPlaceholder: this.state.cityName,
-                textInputEditable: !this.state.isGpsUsed,
+                textInputEditable: !this.state.isGpsSelected,
                 textInputOnChangeText: this.handleTextInputChangeText,
                 textInputStyle: styles.input,
             },
