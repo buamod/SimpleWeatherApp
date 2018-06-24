@@ -69,6 +69,7 @@ const reducer = (state = initialState, action) => {
                     ...action.result,
                 },
                 lastUpdatedTime: new Date(),
+                error: null,
             };
         case CURRENT_WEATHER_DATA_ERROR:
             return { 
