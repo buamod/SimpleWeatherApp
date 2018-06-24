@@ -16,7 +16,7 @@ const styles= EstyleSheet.create({
   icon:{
     //resizeMode: 'contain',
     fontSize: 80,
-    color: 'yellow',
+    color: '$goldenWhite',
   },
   weatherDesc:{
     fontFamily:'HelveticaNeue-Medium',

@@ -40,7 +40,7 @@ export default EStyleSheet.create({
   },
   icon: {
     fontSize: 40,
-    color: '$white',
+    color: '$goldenWhite',
   },
   tempText: {
     color: '$white',
