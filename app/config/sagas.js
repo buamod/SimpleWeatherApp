@@ -55,6 +55,19 @@ const fetchByCity = (dataType, cityName)=> {
     return fetch(fullUrl);
 }
 
+const getUserLocation = () => new Promise((resolve, reject) => {
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(
+            location => resolve(location),
+            error => reject(error),
+            {timeout:10000},
+        );
+    } else{
+        alert('Please turn on GPS');
+        reject('Geolocation is not enabled');
+    }
+});
+
 function* currentPositionOnSuccess(dataType, postData){
     try{
         const response= yield call(
@@ -107,19 +120,8 @@ function* currentPositionOnSuccess(dataType, postData){
 function* updateCurrentWeather(){
     isGpsSelected= yield select(state => state.settings.location.isGpsSelected);
     if (isGpsSelected){
-        /* TODO: uncomment this out
-        navigator.geolocation.getCurrentPosition(
-            (postData) => yield currentPositionOnSuccess(DATA_TYPE_CURRENT_WEATHER, postData),
-            (error) => alert(error),
-            {timeout:10000}
-        )
-        */
-       yield currentPositionOnSuccess(DATA_TYPE_CURRENT_WEATHER, {
-            coords:{
-                latitude: 45.42,
-                longitude: -75.69,
-            }
-       });
+        const postData = yield call(getUserLocation);
+        yield currentPositionOnSuccess(DATA_TYPE_CURRENT_WEATHER, postData);
     } else{
         try{
             const cityName= yield select(state => state.settings.location.cityName);
@@ -145,19 +147,8 @@ function* updateCurrentWeather(){
 function* updateForecast(){
     isGpsSelected= yield select(state => state.settings.location.isGpsSelected);
     if (isGpsSelected){
-        /* TODO: uncomment this out
-        navigator.geolocation.getCurrentPosition(
-            (postData) => yield currentPositionOnSuccess(DATA_TYPE_FORECAST, postData),
-            (error) => alert(error),
-            {timeout:10000}
-        )
-        */
-       yield currentPositionOnSuccess(DATA_TYPE_FORECAST, {
-            coords:{
-                latitude: 45.42,
-                longitude: -75.69,
-            }
-       });
+        const postData = yield call(getUserLocation);
+        yield currentPositionOnSuccess(DATA_TYPE_FORECAST, postData);
     } else{
         try{
             const cityName= yield select(state => state.settings.location.cityName);
