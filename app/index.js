@@ -14,6 +14,7 @@ EStyleSheet.build({
   $primaryBlue: '#2d5dc4',
   $border: '#E2E2E2',
   $inputText: '#797979',
+  $goldenWhite: '#EEE8AA',
 
   $silver:'#C0C0C0',
   $darkGrey: '#3a303a',
