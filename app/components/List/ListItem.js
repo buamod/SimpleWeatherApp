@@ -17,13 +17,26 @@ const iconNames = {
 	Mist: 'md-partly-sunny'
 }
 
-const ListItem = ({ hour, weatherCond, temp }) => (
+const mapWeatherCondToIconName= (weatherCond)=>{
+  if (iconNames.hasOwnProperty(weatherCond)){
+    return iconNames[weatherCond];
+  } else{
+    return 'md-help'
+  }
+}
+
+const ListItem = ({ time, weatherCond, temp }) => (
     <View style={styles.container}>
-        <Text style={styles.hourText}>
-            {hour}
-        </Text>
+        <View style={styles.timeContainer}>
+            <Text style={styles.hourText}>
+                {time.substring(11, 16)}
+            </Text>
+            <Text style={styles.dateText}>
+                {time.substring(0, 10)}
+            </Text>
+        </View>
         <View style={styles.weatherContainer}>
-            <Icon name={iconNames[weatherCond]}  style= {styles.icon}> </Icon>
+            <Icon name={mapWeatherCondToIconName(weatherCond)}  style= {styles.icon}> </Icon>
             <Text style={styles.tempText}>
                 {temp}°
             </Text>
@@ -32,7 +45,7 @@ const ListItem = ({ hour, weatherCond, temp }) => (
 );
 
 ListItem.propTypes = {
-    hour: PropTypes.string,
+    time: PropTypes.string,
     weatherCond: PropTypes.string,
     temp: PropTypes.string,
 };

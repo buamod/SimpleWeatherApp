@@ -14,9 +14,18 @@ export default EStyleSheet.create({
     alignItems: 'center',
     //backgroundColor: '$white',
   },
+  timeContainer:{
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   hourText: {
     color: '$white',
     fontSize: 20,
+  },
+  dateText:{
+    color: '$white',
+    fontSize: 12,
   },
   separator: {
     backgroundColor: '$border',
