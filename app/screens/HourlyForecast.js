@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   ScrollView,
   StatusBar,
-  Text,
   RefreshControl,
   FlatList,
 } from 'react-native';
@@ -12,9 +11,8 @@ import { connect } from 'react-redux';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { ListItem, Separator } from '../components/List';
-import { simWeatherData, defaultHourlyForecast, defaultSettingsData } from '../data/data';
-
 import { updateForecast } from '../actions/forecast';
+import { connectAlert } from '../components/Alert';
 
 const tempKToCelsius= (tempK)=> {
   return (tempK - 273.15).toFixed(0);
@@ -27,10 +25,18 @@ class HourlyForecast extends Component {
     cityName: PropTypes.string,
     timeOfCalculation: PropTypes.string,
     hourForcastList: PropTypes.arrayOf(PropTypes.object),
+    forecastError: PropTypes.string,
+    alertWithType: PropTypes.func,
   };
 
   componentWillMount(){
     this._onRefresh();
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.forecastError && !this.props.forecastError) {
+      this.props.alertWithType('error', 'Error', nextProps.forecastError);
+    }
   };
 
   componentDidMount(){
@@ -43,8 +49,7 @@ class HourlyForecast extends Component {
 
   handleMenuButtonPress= ()=>{
     console.log('Menu button pressed');
-    const settingsData = defaultSettingsData;
-    this.props.navigation.navigate('Settings', {settingsData});
+    this.props.navigation.navigate('Settings');
   }
 
   render() {
@@ -99,12 +104,8 @@ const mapStateToProps= (state)=>{
     cityName: state.forecast.data.city.name || '',
     timeOfCalculation: '',
     hourForcastList,
-
-  }
-
-  return {
-      isFetching: state.forecast.isFetching,
-  }
+    forecastError: state.forecast.error,
+  };
 };
 
-export default connect(mapStateToProps)(HourlyForecast);
+export default connect(mapStateToProps)(connectAlert(HourlyForecast));
