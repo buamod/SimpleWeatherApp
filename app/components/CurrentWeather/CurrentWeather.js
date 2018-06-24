@@ -47,7 +47,7 @@ const CurrentWeather= ({weatherCond, weatherDesc, temp, minTemp, maxTemp, humidi
           Humidity: {humidity}%
         </Text>
         <Text style= {styles.subText}>
-          Wind Speed: {windSpeed} km/h
+          Wind Speed: {windSpeed} m/s
         </Text>
       </View>
     </View>
