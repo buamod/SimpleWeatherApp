@@ -120,8 +120,12 @@ function* currentPositionOnSuccess(dataType, postData){
 function* updateCurrentWeather(){
     isGpsSelected= yield select(state => state.settings.location.isGpsSelected);
     if (isGpsSelected){
-        const postData = yield call(getUserLocation);
-        yield currentPositionOnSuccess(DATA_TYPE_CURRENT_WEATHER, postData);
+        try{
+            const postData = yield call(getUserLocation);
+            yield currentPositionOnSuccess(DATA_TYPE_CURRENT_WEATHER, postData);
+        }catch (e){
+            yield put({type: CURRENT_WEATHER_DATA_ERROR, error: e.message});
+        }
     } else{
         try{
             const cityName= yield select(state => state.settings.location.cityName);
@@ -147,8 +151,13 @@ function* updateCurrentWeather(){
 function* updateForecast(){
     isGpsSelected= yield select(state => state.settings.location.isGpsSelected);
     if (isGpsSelected){
-        const postData = yield call(getUserLocation);
-        yield currentPositionOnSuccess(DATA_TYPE_FORECAST, postData);
+        try{
+            const postData = yield call(getUserLocation);
+            yield currentPositionOnSuccess(DATA_TYPE_FORECAST, postData);
+        }catch (e){
+            yield put({type: FORECAST_DATA_ERROR, error: e.message});
+        }
+
     } else{
         try{
             const cityName= yield select(state => state.settings.location.cityName);
