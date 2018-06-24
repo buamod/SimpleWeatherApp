@@ -51,7 +51,7 @@ const CurrentWeather= ({weatherCond, weatherDesc, temp, minTemp, maxTemp, humidi
         </Text>
       </View>
     </View>
-    <Text style= {styles.subText}>
+    <Text style= {styles.lastUpdatedText}>
       Last Updated: {lastUpdatedTime}
     </Text>
   </View>

@@ -97,7 +97,7 @@ const mapStateToProps= (state)=>{
   return {
       isFetching: state.currentWeather.isFetching || false,
       cityName: currentWeatherData.name || '',
-      timeOfCalculation: new Date((currentWeatherData.dt)*1000).toString().split(" ", 5).join(" ") || '',
+      timeOfCalculation: new Date((currentWeatherData.dt)*1000).toString().split(" ", 4).join(" ") || '',
       weatherCond: currentWeatherData.weather[0].main ||'',
       weatherDesc: currentWeatherData.weather[0].description ||'',
       temp: (tempKToCelsius(currentWeatherData.main.temp)).toString()||'',
