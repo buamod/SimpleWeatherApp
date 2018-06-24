@@ -19,6 +19,7 @@ const styles= EstyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 20,
   },
   bodyText:{
     //marginTop: 30,
@@ -27,17 +28,21 @@ const styles= EstyleSheet.create({
     color:'$primaryBlue',
     alignSelf: 'center',
   },
+  icon: {
+    fontSize: 40,
+    color: '$primaryBlue',
+  },
   bodyTextBold:{
     fontFamily:'HelveticaNeue-Bold',
-    fontSize:18,
+    fontSize:14,
     color:'$primaryBlue',
-    alignSelf: 'center',
   },
   developerImage:{
     height: 100,
     width: 100,
   },
   button:{
+    flexDirection: 'row',
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',

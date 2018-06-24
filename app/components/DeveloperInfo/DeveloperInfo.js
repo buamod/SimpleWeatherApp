@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Text, TouchableOpacity, View, Image, Linking } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import { connectAlert } from '../Alert';
 import styles from './styles';
 
@@ -21,8 +23,8 @@ class DeveloperInfo extends Component {
     componentWillUnmount() {
     }
     
-    handleNamePress= ()=>{
-        url= 'habcdttps://www.linkedin.com/in/alibawazir/';
+    handleLinkPress= ()=>{
+        url= 'https://github.com/buamod/SimpleWeatherApp';
         Linking.openURL(url).catch(()=>{
             this.props.alertWithType('error', 'Sorry!', 'The following link cannot be opened right now\n'+ url);
         });
@@ -42,22 +44,22 @@ class DeveloperInfo extends Component {
                 <View style={styles.container}>
                     <View style={styles.bodyTextContainer}>
                         <Text style= {styles.bodyText}>
-                            This app is developed by
+                            This app uses real time weather data from Open Weather Map API.
                         </Text>
-                        <TouchableOpacity
-                            onPress= {this.handleNamePress}
-                            style= {styles.button}
-                        >
-                            <Text style= {styles.bodyTextBold}>
-                                Ali Ba Wazir
-                            </Text>
-                        </TouchableOpacity>
                     </View>
-                    <Image
-                        source= {require('./images/alibawazir.jpg')}
-                        resizeMode= 'contain'
-                        style={styles.developerImage}
-                    />
+                    <TouchableOpacity
+                            onPress= {this.handleLinkPress}
+                            style= {styles.button}
+                    >
+                        <Icon 
+                            name={'logo-github'}
+                            size={styles.icon.fontSize}
+                            style= {styles.icon}
+                        />
+                        <Text style= {styles.bodyTextBold}>
+                                GitHub Repository
+                        </Text>
+                    </TouchableOpacity>
                     <TouchableOpacity
                         onPress= {this.props.onExitButtonPress}
                         style= {styles.button}
