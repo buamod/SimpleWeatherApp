@@ -36,7 +36,11 @@ const ListItem = ({ time, weatherCond, temp }) => (
             </Text>
         </View>
         <View style={styles.weatherContainer}>
-            <Icon name={mapWeatherCondToIconName(weatherCond)}  style= {styles.icon}> </Icon>
+            <Icon 
+                name={mapWeatherCondToIconName(weatherCond)}
+                size={styles.icon.fontSize}  
+                style= {styles.icon}
+            />
             <Text style={styles.tempText}>
                 {temp}°
             </Text>

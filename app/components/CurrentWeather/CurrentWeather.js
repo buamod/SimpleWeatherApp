@@ -25,7 +25,11 @@ const mapWeatherCondToIconName= (weatherCond)=>{
 const CurrentWeather= ({weatherCond, weatherDesc, temp, minTemp, maxTemp, humidity, windSpeed, lastUpdatedTime})=> (
   <View style= {styles.container}>
     <View style= {styles.iconWeatherCondContainer}>
-      <Icon name={mapWeatherCondToIconName(weatherCond)}  style= {styles.icon}> </Icon>
+      <Icon 
+        name={mapWeatherCondToIconName(weatherCond)}
+        size={styles.icon.fontSize}
+        style= {styles.icon}
+      />
       <Text style= {styles.weatherDesc}>
         {weatherDesc}
       </Text>

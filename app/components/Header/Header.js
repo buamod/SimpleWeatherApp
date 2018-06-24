@@ -51,7 +51,11 @@ class Header extends Component{
     return(
       <View style= {styles.container}>
         <TouchableOpacity style= {styles.leftButton} onPress= {this.props.onMenuButtonPress}>
-          <Icon name={'md-menu'}  style= {styles.icon}> </Icon>
+          <Icon 
+            name={'md-menu'}
+            size={styles.icon.fontSize}
+            style= {styles.icon}
+          />
         </TouchableOpacity>
         <View style= {styles.headline}>
           <Text style= {styles.cityName}>
@@ -62,7 +66,11 @@ class Header extends Component{
           </Text>
         </View>
         <TouchableOpacity style= {styles.rightButton} onPress= {this.handleInfoButtonPress}>
-          <Icon name={'md-information-circle'}  style= {styles.icon}> </Icon>
+          <Icon 
+            name={'md-information-circle'}
+            size={styles.icon.fontSize}
+            style= {styles.icon}
+          />
         </TouchableOpacity>
         <DeveloperInfo
           visible= {this.state.isDevInfoVisible}
