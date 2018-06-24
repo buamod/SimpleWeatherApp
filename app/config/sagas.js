@@ -63,11 +63,8 @@ function* currentPositionOnSuccess(dataType, postData){
             postData.coords.latitude, //2nd arg
             postData.coords.longitude, //3rd arg
         );
-        console.log ('>debug>>>>>>>>> response: ', response);
         const result = yield response.json();
-        console.log ('>debug>>>>>>>>> result: ', result);
         if (result.cod != 200){
-            console.log('>debug>>>>>>>>> result.cod !== 200');
             //server returned an error
             switch (dataType){
                 case DATA_TYPE_CURRENT_WEATHER:
@@ -81,7 +78,6 @@ function* currentPositionOnSuccess(dataType, postData){
             }
             
         }else{
-            console.log('>debug>>>>>>>>> result.cod === 200');
             //server returned valid response
             switch (dataType){
                 case DATA_TYPE_CURRENT_WEATHER:

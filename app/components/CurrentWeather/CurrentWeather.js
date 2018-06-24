@@ -15,12 +15,19 @@ const iconNames = {
 	Mist: 'md-partly-sunny'
 }
 
-const CurrentWeather= ({weatherCond, temp, minTemp, maxTemp, humidity, windSpeed, lastUpdatedTime})=> (
+const mapWeatherCondToIconName= (weatherCond)=>{
+  if (iconNames.hasOwnProperty(weatherCond)){
+    return iconNames[weatherCond];
+  } else{
+    return 'md-help'
+  }
+}
+const CurrentWeather= ({weatherCond, weatherDesc, temp, minTemp, maxTemp, humidity, windSpeed, lastUpdatedTime})=> (
   <View style= {styles.container}>
     <View style= {styles.iconWeatherCondContainer}>
-      <Icon name={iconNames[weatherCond]}  style= {styles.icon}> </Icon>
-      <Text style= {styles.weatherCond}>
-        {weatherCond}
+      <Icon name={mapWeatherCondToIconName(weatherCond)}  style= {styles.icon}> </Icon>
+      <Text style= {styles.weatherDesc}>
+        {weatherDesc}
       </Text>
     </View>
     <Text style= {styles.tempNumber}>
@@ -52,6 +59,7 @@ const CurrentWeather= ({weatherCond, temp, minTemp, maxTemp, humidity, windSpeed
 
 CurrentWeather.PropTypes= {
   weatherCond: PropTypes.string,
+  weatherDesc: PropTypes.string,
   temp: PropTypes.string,
   minTemp: PropTypes.string,
   maxTemp: PropTypes.string,

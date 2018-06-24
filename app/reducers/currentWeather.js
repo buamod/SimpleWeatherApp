@@ -50,6 +50,7 @@ const initialState = {
         "name": "Unknown",
         "cod": 200
     },
+    lastUpdatedTime: new Date(),
     error: null,
 }
   
@@ -67,6 +68,7 @@ const reducer = (state = initialState, action) => {
                 data:{
                     ...action.result,
                 },
+                lastUpdatedTime: new Date(),
             };
         case CURRENT_WEATHER_DATA_ERROR:
             return { 

@@ -20,13 +20,24 @@ import {
 
 import {fetchWeather} from '../weatherAPI'
 
+const tempKToCelsius= (tempK)=> {
+  return (tempK - 273.15).toFixed(0);
+}
+
 class Home extends Component {
   static propTypes= {
     dispatch: PropTypes.func,
     isFetching: PropTypes.bool,
     cityName: PropTypes.string,
     timeOfCalculation: PropTypes.string,
-
+    weatherCond: PropTypes.string,
+    weatherDesc: PropTypes.string,
+    temp: PropTypes.string,
+    minTemp: PropTypes.string,
+    maxTemp: PropTypes.string,
+    humidity: PropTypes.string,
+    windSpeed: PropTypes.string,
+    lastUpdatedTime: PropTypes.string,
   };
 
   componentWillMount(){
@@ -64,13 +75,14 @@ class Home extends Component {
             }
           >
             <CurrentWeather
-              weatherCond= {'TMP'}
-              temp= {'TMP'}
-              minTemp= {'TMP'}
-              maxTemp= {'TMP'}
-              humidity= {'TMP'}
-              windSpeed= {'TMP'}
-              lastUpdatedTime= {'TMP'}
+              weatherCond= {this.props.weatherCond}
+              weatherDesc= {this.props.weatherDesc}
+              temp= {this.props.temp}
+              minTemp= {this.props.minTemp}
+              maxTemp= {this.props.maxTemp}
+              humidity= {this.props.humidity}
+              windSpeed= {this.props.windSpeed}
+              lastUpdatedTime= {this.props.lastUpdatedTime}
             />
           </ScrollView>
         </Container>
@@ -83,19 +95,23 @@ class Home extends Component {
 const mapStateToProps= (state)=>{
   const currentWeatherData= state.currentWeather.data;
   return {
-      isFetching: state.currentWeather.isFetching,
-      cityName: currentWeatherData.name,
-      timeOfCalculation: new Date((currentWeatherData.dt)*1000).toString().split(" ", 5).join(" "),
-
+      isFetching: state.currentWeather.isFetching || false,
+      cityName: currentWeatherData.name || '',
+      timeOfCalculation: new Date((currentWeatherData.dt)*1000).toString().split(" ", 5).join(" ") || '',
+      weatherCond: currentWeatherData.weather[0].main ||'',
+      weatherDesc: currentWeatherData.weather[0].description ||'',
+      temp: (tempKToCelsius(currentWeatherData.main.temp)).toString()||'',
+      minTemp: (tempKToCelsius(currentWeatherData.main.temp_min)).toString()||'',
+      maxTemp: (tempKToCelsius(currentWeatherData.main.temp_max)).toString()||'',
+      humidity: (currentWeatherData.main.humidity).toString()||'',
+      windSpeed:(currentWeatherData.wind.speed).toString()||'',
+      lastUpdatedTime: state.currentWeather.lastUpdatedTime.toString().split(" ", 5).join(" ")||'',
   }
 };
 
 export default connect(mapStateToProps)(Home);
 
 /*
-function toCelsius(k) {
-  return k - 273.15
-}
 
 const iconNames = {
 	Default: 'md-time',
