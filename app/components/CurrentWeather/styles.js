@@ -9,16 +9,16 @@ const styles= EstyleSheet.create({
     //height: 200,
   },
   iconWeatherCondContainer:{
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
   icon:{
     //resizeMode: 'contain',
-    fontSize: 40,
+    fontSize: 80,
     color: 'yellow',
   },
-  weatherCond:{
+  weatherDesc:{
     fontFamily:'HelveticaNeue-Medium',
     fontSize:20,
     color:'$white',
@@ -43,7 +43,12 @@ const styles= EstyleSheet.create({
   },
   subText:{
     fontFamily:'HelveticaNeue-Medium',
-    fontSize:14,
+    fontSize:16,
+    color:'$white',
+  },
+  lastUpdatedText:{
+    fontFamily:'HelveticaNeue-Medium',
+    fontSize:12,
     color:'$white',
   }
 });
