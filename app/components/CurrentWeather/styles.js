@@ -6,7 +6,7 @@ const styles= EstyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginVertical: 20,
-    //height: 200,
+    paddingVertical: 20,
   },
   iconWeatherCondContainer:{
     flexDirection: 'column',
