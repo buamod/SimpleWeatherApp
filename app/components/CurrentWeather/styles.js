@@ -48,7 +48,7 @@ const styles= EstyleSheet.create({
   },
   lastUpdatedText:{
     fontFamily:'HelveticaNeue-Medium',
-    fontSize:12,
+    fontSize:14,
     color:'$white',
   }
 });
