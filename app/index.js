@@ -23,7 +23,6 @@ EStyleSheet.build({
   //$outline: 1,
 });
 
-//export default () => <Tabs/>;
 export default class App extends Component {
   render() {
     return(
