@@ -37,7 +37,6 @@ class Home extends Component {
   };
 
   componentWillMount(){
-    this._onRefresh();
   };
 
   componentWillReceiveProps(nextProps) {
@@ -47,6 +46,7 @@ class Home extends Component {
   };
 
   componentDidMount(){
+    this._onRefresh();
   };
 
   _onRefresh=()=> {

@@ -30,7 +30,6 @@ class HourlyForecast extends Component {
   };
 
   componentWillMount(){
-    this._onRefresh();
   };
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +39,7 @@ class HourlyForecast extends Component {
   };
 
   componentDidMount(){
+    this._onRefresh();
   };
 
   _onRefresh=()=> {
